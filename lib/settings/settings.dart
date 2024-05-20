@@ -1,9 +1,9 @@
-import 'package:babynames/BottomNavigationBar/gender.dart';
-import 'package:babynames/settings/nationality.dart';
+import 'package:babynames/Gender/genderselection.dart';
+import 'package:babynames/nationality.dart';
 import 'package:babynames/settings/rejectednames.dart';
 import 'package:flutter/material.dart';
 
-import '../invitation/invitepage.dart';
+import '../invitepage.dart';
 import '../BottomNavigationBar/likednames.dart';
 import '../BottomNavigationBar/matchesname.dart';
 
@@ -160,7 +160,7 @@ class _SettingsPageState extends State<SettingsPage> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage()),
+          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
         );
         break;
       case 1:
@@ -194,7 +194,7 @@ class _SettingsPageState extends State<SettingsPage> {
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage()),
+          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
         );
         break;
       case 2:

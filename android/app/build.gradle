@@ -2,6 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+    id 'com.google.gms.google-services'
 }
 
 def localProperties = new Properties()
@@ -24,7 +25,6 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.babynames"
-    compileSdkVersion 30
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -50,6 +50,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
         minSdkVersion 21
     }
 
@@ -66,4 +67,10 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:32.7.1')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.firebase:firebase-core:21.1.1"
+    implementation 'com.android.support:multidex:1.0.3'
+}

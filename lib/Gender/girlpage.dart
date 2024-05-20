@@ -4,7 +4,9 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GirlpageWidget extends StatefulWidget {
-  const GirlpageWidget({Key? key});
+  final String selectedNationality;
+
+  const GirlpageWidget({Key? key, required this.selectedNationality}) : super(key: key);
 
   @override
   _GirlpageWidgetState createState() => _GirlpageWidgetState();
@@ -19,7 +21,7 @@ class _GirlpageWidgetState extends State<GirlpageWidget> {
   @override
   void initState() {
     super.initState();
-    _nameData = DatabaseHelper().getDataByGender('F');
+    _nameData = DatabaseHelper().getDataByGenderAndNationality('F', widget.selectedNationality);
     _loadInterstitialAd();
     _loadCurrentIndex();
   }
@@ -120,8 +122,8 @@ class _GirlpageWidgetState extends State<GirlpageWidget> {
               color: Colors.deepPurpleAccent,
               child: Column(
                 children: [
-                  const SizedBox(height: 60.0),
-                  Image.asset('assets/image/babyexplore.png'),
+                  const SizedBox(height: 70.0),
+                  Image.asset('assets/image/babyexplore1.png'),
                   const SizedBox(height: 30.0),
                   SizedBox(
                     width: 350,
@@ -141,24 +143,24 @@ class _GirlpageWidgetState extends State<GirlpageWidget> {
                               Text(
                                 name,
                                 style: const TextStyle(
-                                  fontSize: 24.0,
+                                  fontSize: 30.0,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(height: 20.0),
-                              const SizedBox(
-                                height: 48, // Set fixed height for the meaning
-                                child: Text(
-                                  'Name Meaning',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 10.0),
+                              const SizedBox(height: 25.0),
+                              // const SizedBox(
+                              //   height: 48, // Set fixed height for the meaning
+                              //   child: Text(
+                              //     'Name Meaning',
+                              //     style: TextStyle(
+                              //       fontSize: 16.0,
+                              //       color: Colors.white,
+                              //       fontWeight: FontWeight.bold,
+                              //     ),
+                              //   ),
+                              // ),
+                              // const SizedBox(height: 10.0),
                               Expanded(
                                 child: SingleChildScrollView(
                                   child: Text(
@@ -166,12 +168,12 @@ class _GirlpageWidgetState extends State<GirlpageWidget> {
                                     textAlign: TextAlign.justify,
                                     style: const TextStyle(
                                       color: Colors.white,
-                                      fontSize: 16.0,
+                                      fontSize: 20.0,
                                     ),
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 60.0),
+                              const SizedBox(height: 10.0),
                               Row(
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceEvenly,

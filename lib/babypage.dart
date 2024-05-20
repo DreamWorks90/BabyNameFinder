@@ -1,4 +1,4 @@
-import 'package:babynames/settings/nationality.dart';
+import 'package:babynames/invitepage.dart';
 import 'package:flutter/material.dart';
 
 class BabyPage extends StatefulWidget {
@@ -49,7 +49,7 @@ class _BabyPageState extends State<BabyPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const NationalityPage()),
+                                builder: (context) => const InvitePage()),
                           );
                         },
                         child: Image.asset(

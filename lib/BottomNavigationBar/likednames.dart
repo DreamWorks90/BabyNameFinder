@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:babynames/db/database_helper.dart';
-import 'package:babynames/BottomNavigationBar/gender.dart';
+import 'package:babynames/likednamedetails.dart';
+import 'package:babynames/Gender/genderselection.dart';
 import 'package:babynames/settings/settings.dart';
 import 'package:babynames/BottomNavigationBar/matchesname.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -14,32 +15,32 @@ class likednamepage extends StatefulWidget {
 
 class _likednamepageState extends State<likednamepage> {
   int _currentIndex = 1; // Index of the current page
-  late BannerAd _bannerAd;
-  bool _isBannerAdLoaded = false;
+  // late BannerAd _bannerAd;
+  // bool _isBannerAdLoaded = false;
 
   @override
   void initState() {
     super.initState();
-    _bannerAd = BannerAd(
-      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
-      size: AdSize.banner,
-      request: AdRequest(),
-      listener: BannerAdListener(
-        onAdLoaded: (_) {
-          setState(() {
-            _isBannerAdLoaded = true;
-          });
-        },
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-        },
-      ),
-    )..load();
+    // _bannerAd = BannerAd(
+    //   adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+    //   size: AdSize.banner,
+    //   request: AdRequest(),
+    //   listener: BannerAdListener(
+    //     onAdLoaded: (_) {
+    //       setState(() {
+    //         _isBannerAdLoaded = true;
+    //       });
+    //     },
+    //     onAdFailedToLoad: (ad, error) {
+    //       ad.dispose();
+    //     },
+    //   ),
+    // )..load();
   }
 
   @override
   void dispose() {
-    _bannerAd.dispose();
+    // _bannerAd.dispose();
     super.dispose();
   }
 
@@ -54,10 +55,8 @@ class _likednamepageState extends State<likednamepage> {
             fontWeight: FontWeight.bold, // Set font weight to bold
           ),
         ),
-        backgroundColor:
-            Colors.blue, // Setting app bar background color to blue
-        iconTheme:
-            IconThemeData(color: Colors.white), // Set back arrow color to white
+        backgroundColor: Colors.blue, // Setting app bar background color to blue
+        iconTheme: IconThemeData(color: Colors.white), // Set back arrow color to white
       ),
       backgroundColor: Colors.blue, // Setting app bar background color to blue
       body: Container(
@@ -88,8 +87,7 @@ class _likednamepageState extends State<likednamepage> {
                       child: Text('Error: ${snapshot.error}'),
                     );
                   } else {
-                    final List<Map<String, dynamic>> likedNames =
-                        snapshot.data!;
+                    final List<Map<String, dynamic>> likedNames = snapshot.data!;
                     return ListView.builder(
                       itemCount: likedNames.length,
                       itemBuilder: (context, index) {
@@ -98,7 +96,17 @@ class _likednamepageState extends State<likednamepage> {
                         final meaning = likedNames[index]['meaning'];
 
                         return GestureDetector(
-                          onTap: () {},
+                          // onTap: () {
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => BabyNameDetailsWidget(
+                          //         name: name,
+                          //         meaning: meaning,
+                          //       ),
+                          //     ),
+                          //   );
+                          // },
                           child: Card(
                             child: ListTile(
                               title: Text(
@@ -187,28 +195,28 @@ class _likednamepageState extends State<likednamepage> {
                 ),
               ],
             ),
-            SizedBox(height: 10), // Added space
-            if (_isBannerAdLoaded)
-              Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    child: AdWidget(ad: _bannerAd),
-                    width: _bannerAd.size.width.toDouble(),
-                    height: _bannerAd.size.height.toDouble(),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      _bannerAd.dispose();
-                      setState(() {
-                        _isBannerAdLoaded = false;
-                      });
-                    },
-                    icon: Icon(Icons.close),
-                  ),
-                ],
-              ),
+           // SizedBox(height: 10), // Added space
+            // if (_isBannerAdLoaded)
+            //   Stack(
+            //     alignment: Alignment.topRight,
+            //     children: [
+            //       Container(
+            //         alignment: Alignment.center,
+            //         child: AdWidget(ad: _bannerAd),
+            //         width: _bannerAd.size.width.toDouble(),
+            //         height: _bannerAd.size.height.toDouble(),
+            //       ),
+            //       IconButton(
+            //         onPressed: () {
+            //           _bannerAd.dispose();
+            //           setState(() {
+            //             _isBannerAdLoaded = false;
+            //           });
+            //         },
+            //         icon: Icon(Icons.close),
+            //       ),
+            //     ],
+            //   ),
           ],
         ),
       ),
@@ -227,11 +235,11 @@ class _likednamepageState extends State<likednamepage> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage()),
+          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
         );
         break;
       case 1:
-        // Do nothing as we are already on the liked names page
+      // Do nothing as we are already on the liked names page
         break;
       case 2:
         Navigator.push(

@@ -1,4 +1,5 @@
-import 'package:babynames/BottomNavigationBar/gender.dart';
+import 'package:babynames/Gender/genderselection.dart';
+import 'package:babynames/nationality.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 
@@ -48,7 +49,8 @@ class _InvitePageState extends State<InvitePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const GenderPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const NationalityPage()),
                 );
               },
               child: Text(

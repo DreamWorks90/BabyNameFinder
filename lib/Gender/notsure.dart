@@ -3,14 +3,16 @@ import 'package:babynames/db/database_helper.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class BoypageWidget extends StatefulWidget {
-  const BoypageWidget({Key? key});
+class NotsurepageWidget extends StatefulWidget {
+  final String selectedNationality;
+
+  const NotsurepageWidget({Key? key, required this.selectedNationality}) : super(key: key);
 
   @override
-  _BoypageWidgetState createState() => _BoypageWidgetState();
+  _NotsurepageWidgetState createState() => _NotsurepageWidgetState();
 }
 
-class _BoypageWidgetState extends State<BoypageWidget> {
+class _NotsurepageWidgetState extends State<NotsurepageWidget> {
   late Future<List<Map<String, dynamic>>> _nameData;
   int _currentIndex = 0;
   late InterstitialAd _interstitialAd;
@@ -19,7 +21,7 @@ class _BoypageWidgetState extends State<BoypageWidget> {
   @override
   void initState() {
     super.initState();
-    _nameData = DatabaseHelper().getDataByGender('M');
+    _nameData = DatabaseHelper().getDataByGenderAndNationality('X', widget.selectedNationality);
     _loadInterstitialAd();
     _loadCurrentIndex();
   }
@@ -120,8 +122,8 @@ class _BoypageWidgetState extends State<BoypageWidget> {
               color: Colors.deepPurpleAccent,
               child: Column(
                 children: [
-                  const SizedBox(height: 60.0),
-                  Image.asset('assets/image/babyexplore.png'),
+                  const SizedBox(height: 70.0),
+                  Image.asset('assets/image/babyexplore1.png'),
                   const SizedBox(height: 30.0),
                   SizedBox(
                     width: 350,
@@ -141,24 +143,24 @@ class _BoypageWidgetState extends State<BoypageWidget> {
                               Text(
                                 name,
                                 style: const TextStyle(
-                                  fontSize: 24.0,
+                                  fontSize: 30.0,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(height: 20.0),
-                              const SizedBox(
-                                height: 48, // Set fixed height for the meaning
-                                child: Text(
-                                  'Name Meaning',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 10.0),
+                              const SizedBox(height: 25.0),
+                              // const SizedBox(
+                              //   height: 48, // Set fixed height for the meaning
+                              //   child: Text(
+                              //     'Name Meaning',
+                              //     style: TextStyle(
+                              //       fontSize: 16.0,
+                              //       color: Colors.white,
+                              //       fontWeight: FontWeight.bold,
+                              //     ),
+                              //   ),
+                              // ),
+                              // const SizedBox(height: 10.0),
                               Expanded(
                                 child: SingleChildScrollView(
                                   child: Text(
@@ -166,12 +168,12 @@ class _BoypageWidgetState extends State<BoypageWidget> {
                                     textAlign: TextAlign.justify,
                                     style: const TextStyle(
                                       color: Colors.white,
-                                      fontSize: 16.0,
+                                      fontSize: 20.0,
                                     ),
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 60.0),
+                              const SizedBox(height: 10.0),
                               Row(
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceEvenly,

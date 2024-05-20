@@ -1,4 +1,4 @@
-import 'package:babynames/BottomNavigationBar/gender.dart';
+import 'package:babynames/Gender/genderselection.dart';
 import 'package:flutter/material.dart';
 
 import 'likednames.dart';
@@ -114,7 +114,7 @@ class _matchesnamepage extends State<matchesnamepage> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage()),
+          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
         );
         break;
       case 1:

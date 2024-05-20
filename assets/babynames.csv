@@ -1,53 +1,406 @@
-Name,Meaning,Nationality,Gender
-Atharv,Knowledgable; Knowledge of God; Name for Lord Ganesh,Indian,M
-Ishaan,The sun; North-east direction,Indian,M
-Divya,Divine brilliance,Indian,F
-Tulsi,"Holy basil, sacred plant",Indian,F
-Aadhira,Moon,Indian,F
-Mihir,Sun; Friend,Indian,M
-Akhilesh,"Indestructible, immortal",Indian,M
-Nisha,Night,Indian,F
-Hemali,To bring wealth,Indian,F
-Rajesh,"Ruler of Kings, God of Kings, Lord of Kings",Indian,M
-Anand,Joy,Indian,M
-Akshay,"Eternal, Imperishable, Undecaying",Indian,M
-Pravin,Skilled; Talented,Indian,M
-Kaeya,Monsoon flower,Indian,F
-Harini,Deer,Indian,F
-Sanjiv,"Bringing back to life, Living, Reviving",Indian,M
-Satish,"Victorious, God of Truth, Lord of Hundreds",Indian,M
-Devika,Derived from God,Indian,F
-Ajit,Unconquerable,Indian,M
-Anil,"Air, Wind, God of wind and Air",Indian,M
-Sujay,"A great victory, triumph",Indian,M
-Lian,"Lotus, waterlily; Waterfall; White silk; Skilled; (To become) great",Chinese,F
-Yan,Beautiful,Chinese,F
-Mulan,"Magnolia; Wood orchid; Soft, gentle; Bald",Chinese,F
-Yee,"Countryside; Plum; Happy, joy; Harmony",Chinese,F
-Song,"Strong, powerful; Soothing",Chinese,X
-Xiao,"Dreary, mournful; Dawn; Young; Little",Chinese,X
-Ying,Answer; Clever; Brave,Chinese,X
-Dong,"To supervise, manage",Chinese,M
-Chung,Common,Chinese,M
-Chong,"High, sublime, lofty",Chinese,M
-Shen,"Liquid; Faithful; Cautious; Spirit, divinity; Deep; Mysterious; Amulet; Encircle",Chinese,X
-Qi,"Life-force, positive energy; A fine jade; Outstanding",Chinese,X
-Lei,Thunder,Chinese,X
-Bao,Bundle or package; precious treasure; guarantee,Chinese,M
-Wen,Cultured; Literate,Chinese,M
-Xian,Present; Elegant; Virtuous; Admire,Chinese,X
+Aabheer,Cowherd; one who tends to and cares for cows.,India,M
+Aadhira,Moon,India,F
+Aadit,"Peak, beginning; a person who is the first or foremost.",India,M
+Aayan,God's gift; a divine blessing or precious offering.,India,M
+Abi,"""My joy"" or ""Giver of joy"" in Hebrew.",India,X
+Abiyudhay,"Prosperous, successful; someone who achieves abundance and wealth.",India,M
+Adarsh,"Peak, beginning; a person who is the first or foremost.Peak, beginning; a person who is the first or foremost.",India,M
+Adesh,"Command, order; a person who gives authoritative instructions.",India,M
+Adhi,"First, original; a person who is at the forefront of something.",India,M
+Adhisayan," ""Miracle"" or ""wonder"" - derived from Tamil, representing something extraordinary or marvelous.",India,M
+Agalya,"Pure, virtuous; a person of sincere and noble character.",India,F
+Agnivesh,"Bright, fiery; one who radiates warmth and energy.",India,M
+Ahan,"Dawn, morning; a person who brings new beginnings and freshness.",India,M
+Ajay,"Ajay"" suggests invincibility and fearlessness.",India,M
+Ajit,Unconquerable,India,M
+Ajith,Conveys the idea of being unconquerable or undefeated.,India,M
+Akhilesh,"Indestructible, immortal",India,M
+Akshay,"Eternal, Imperishable, Undecaying",India,M
+Alessio,Defender,Italy,X
+Aligin,"Noble, honorable; a person of high moral character and integrity.",India,M
+Amal,"""Hope"" or ""aspiration"" - an Arabic name symbolizing optimism and ambition.",India,M
+Amar,"Immortal, eternal; a person who is timeless and enduring.",India,M
+Amish,"Pure, honest; a person of integrity and sincerity.",India,M
+Anand,Joy,India,M
+Anay," Unique, incomparable; someone who stands out from others.",India,M
+Anil,"Air, Wind, God of wind and Air",India,M
+Anishka,"Unique and unparalleled, like no other.",India,F
+Anishvara,"Supreme ruler, lord; a divine figure of ultimate authority.",India,M
+Anvi,Goddess of wealth; a divine figure associated with prosperity and abundance.,India,M
+Araj,"Desire, wish; a person who seeks fulfillment and achievement.",India,M
+Arav,"Peaceful, calm; a person who brings tranquility and serenity.",India,M
+Arif,"Knowledgeable, wise; someone who is deeply insightful and perceptive.",India,M
+Aryan,"Noble, honorable; someone of high social standing and character.",India,M
+Arzit,"Wished for, desired; someone who is cherished and valued.",India,M
+Ashwanth,"Represents the sacred fig tree, symbolizing longevity.",India,M
+Aslam,"Safe, secure; a person who provides protection and comfort.",India,M
+Aslim,"Intact, unharmed; someone who remains whole and unscathed.",India,M
+Asrith,"Dependent on God, faithful; someone who places their trust in divine power.",India,M
+Atharv,Knowledgable; Knowledge of God; Name for Lord Ganesh,India,M
+Athiyan,"Radiant, shining; one who brings light and brightness.",India,M
+Azar, a Persian name representing warmth and energy.,India,M
+Badreesh,Lord of the ocean; a powerful and majestic individual.,India,M
+Badri,Lord of mountains; a person with strong and stable character.,India,M
+Bainin,"Blissful, joyful; someone who embodies happiness and delight.",India,M
+Baisath,"Shelter, refuge; a person who provides safety and protection to others.",India,M
+Balram,Young Krishna; a strong and supportive companion.,India,M
+Bambina,Young girl,Italy,X
+Baneet,"Polite, courteous; someone who is well-mannered and respectful.",India,M
+Bao,Bundle or package; precious treasure; guarantee,China,M
+Bharathi,Name of the god Saraswathi,India,X
+Bhumesh,Lord of the Earth; a person who is grounded and connected.,India,M
+Bibin,"Pure, innocent; someone who possesses a childlike simplicity and honesty.",India,M
+Bijal,"Radiance, brightness; a person who shines with inner light.",India,M
+Bikram,"Courageous, valiant; someone who faces challenges with bravery.",India,M
+Birju,"Brave, courageous; one who displays strength and valor.",India,X
+Blanca,white and pure,Italy,X
+Chaanakya,"Wise, astute; someone possessing great intellect and insight.",India,X
+Chahel,"Cheerful, lively; a person who spreads joy and positivity.",India,M
+Chaitanya,"Consciousness, awareness; one who is spiritually enlightened.",India,M
+Cheran,"Noble, righteous; someone of high moral character and integrity.",India,M
+Chetak,"Swift, agile; a person who is quick and nimble.",India,M
+Chong,"High, sublime, lofty",China,M
+Chung,Common,China,M
+Dakshit,"Skillful, adept; a person who excels in their abilities and talents.",India,M
+Danvit,"Knowledgeable, wise; a person who possesses deep understanding and insight.",India,M
+Dario,Possessing goodness,Italy,M
+Daswin,Servant of God; a person devoted to divine service and spirituality.,India,M
+Daswin,Servant of God; a person devoted to divine service and spirituality.,India,M
+Daxit,"Expert, skilled; someone who is proficient and knowledgeable.",India,M
+Desan,"Nation, country; a person who represents or is connected to their homeland.",India,M
+Dev ,"Divine, god-like; a person with spiritual qualities or celestial attributes.",India,M
+Deva Dharshini,"One who sees the divine, possessing spiritual insight.",India,F
+Devika,Derived from God,India,F
+Dhaban,"Strong, steadfast; someone who is resilient and unwavering in their convictions.",India,M
+Dhakilan,"Clever, resourceful; a person who is intelligent and capable of finding solutions",India,M
+Dhakin,"South, southern direction; someone associated with or hailing from the south.",India,M
+Dhakshanaya,"Intelligent, knowledgeable, possessing wisdom.",India,F
+Dhansingh,Wealthy lion; a person who is rich in courage and strength.,India,M
+Dharani,"""Dharani"" represents the earth, the nurturing element.",India,X
+Dharbiyan,"Skilled, adept; a person who excels in their abilities and talents.",India,M
+Dharen,"Upholder, supporter; someone who provides strength and stability to others.",India,M
+Dhashvanth,"Fortunate, blessed; a person endowed with good fortune and prosperity.",India,M
+Dhaswan,"Auspicious, favorable; someone who brings positive outcomes and good luck.",India,M
+Dheeran,"Courageous, brave; a person who faces challenges with strength and valor.",India,M
+Dheneesh,"Wealthy, affluent; a person who possesses abundance and riches.",India,M
+Dheskith,"Signifies intelligence, wisdom, and astuteness.",India,M
+Dhibish,"Radiant, shining; someone who emanates brightness and positivity.",India,M
+Dhishan,"Intelligent, wise; someone with profound knowledge and insight.",India,M
+Dhivya,Divine or sacred,India,F
+Dhivya Bharathi,Dhivya isa mean of Divine or scared and Bharathi is name of god Saraswathi,India,F
+Dhiyash,"Bright, radiant; a person who shines with inner light and brilliance.",India,
+Dipin,"Illuminated, enlightened; a person who brings light and understanding.",India,M
+Divya,Divine brilliance,India,F
+Diya,"Illuminating, like a lamp shining bright in darkness.",India,F
+Diyan,"Bright, radiant; someone who shines with inner light and positivity.",India,M
+Dong,"To supervise, manage",China,M
+Dushyant,Destroyer of evil; a force against wrongdoing and injustice.,India,M
+Eagan,"Fire, flame; a person with a passionate and energetic spirit.",India,M
+Eeman,"Faith, belief; someone who embodies trust and spiritual conviction.",India,M
+Egith,"Bright, radiant; a person who shines with inner light and positivity.",India,M
+Ekanth,"Solitude, tranquility; a person who finds peace in isolation.",India,M
+Eniyan,Eye of wisdom; someone who perceives and understands things profoundly.,India,M
+Esin,"Inspired, creative; someone who is driven by imagination and innovation.",India,X
+Ezhinan,"Knowledgeable, wise; a person who possesses deep understanding and wisdom.",India,M
+Fabrizio,Smith; Craftsman,Italy,X
 Fai,"
-Beginning; Fees, to cost or spend",Chinese,M
-Fang,Fragrance; Virtue; Beautiful,Chinese,X
-Niu,"Cute, young girl",Chinese,F
-Zhan,"Valuable, Genuine, Innocent; Deep",Chinese,X
-Giovanni,God is gracious,Italian,M
-Dario,Possessing goodness,Italian,M
-Alessio,Defender,Italian,M
-Rocco,"Rock; crow, rook; Rest, repose",Italian,M
-Fabrizio,Smith; Craftsman,Italian,M
-Isabella,Pledged; Devoted to God; Beautiful,Italian,F
-Luciana,light,Italian,F
-Blanca,white and pure,Italian,F
-Bambina,Young girl,Italian,F
-Luca,bringer of light; from Lucania,Italian,X
+Beginning; Fees, to cost or spend",China,M
+Fang,Fragrance; Virtue; Beautiful,China,X
+Giovanni,God is gracious,Italy,M
+Gireesh,Lord of the mountains; a divine ruler over nature's heights.,India,M
+Giri,"Mountain, strong; someone who embodies stability, strength, and resilience.",India,M
+Girijesh,Lord of the mountains; a divine or revered figure associated with mountains.,India,M
+Girilal,Son of the mountain; someone deeply connected to nature and strength.,India,M
+Gugan,"Lord of the universe, symbolizing cosmic rule.",India,M
+Gurupreeth,Love for the teacher; a deep respect and affection for mentors.,India,M
+Hamsanth,"Swan-like, graceful; a person who embodies elegance and beauty.",India,M
+Hansik,"Pure, serene; someone who is calm, peaceful, and pure in spirit.",India,M
+Hardik,"Heartfelt, sincere; a person who is warm, genuine, and deeply affectionate.",India,M
+Hareesh,Lord of the Hara; a divine embodiment of Shiva's power.,India,M
+Harendra,Lord Shiva; a divine figure associated with auspiciousness and destruction.,India,M
+Harini,Deer,India,F
+Harish,Lord of monkeys; a divine ruler or a person with leadership qualities.,India,M
+Harshini,"Joyful and cheerful, bringing smiles to faces.",India,F
+Harvin,"Winner, conqueror; a person who achieves victory and success.",India,M
+Hashinni,"Delightful and pleasing, spreading happiness.",India,F
+Hemali,To bring wealth,India,F
+Heman,"Golden, radiant; someone who shines with brilliance and prosperity.",India,M
+Hetvik,Full of love and affection; a person who spreads warmth and care.,India,M
+Himesh,Lord of snow; a divine figure associated with purity and coldness.,India,M
+Hiran,"Deer, gazelle; a person with grace, agility, and gentleness",India,M
+Hiresh,"Lord of the sun; a divine figure associated with warmth, light, and energy.",India,M
+Iniyal,"Sweet, pleasant, delightful to be around.",India,F
+Iniyan,"Lovable, delightful, bringing joy to others.",India,M
+Irfan,"Knowledgeable, enlightened, possessing wisdom.",India,M
+Isabella,Pledged; Devoted to God; Beautiful,Italy,X
+Ishaan,The sun; North-east direction,India,M
+Ishan,"Lord Shiva; a divine figure associated with creation, destruction, and transformation.",India,M
+Ishanth,Lord of the gods; a divine ruler or a person with divine qualities.,India,M
+Jaba,Resembling the hyacinth flower; someone with natural beauty and grace.,China,X
+Jaganu,"Universe, cosmos; a person who encompasses all existence and creation.",China,X
+Jai,"Victory, success; a person who triumphs over challenges and obstacles.",India,M
+Jaideep,Victory lamp; a symbol of triumph and illumination in the darkness.,India,M
+Jaideesh,Victorious lord; a divine figure who conquers over challenges and obstacles.,India,M
+Jashwanth,"Famous, renowned; one who is celebrated and well-known.",India,M
+Jasvin,"Successful, victorious; someone who achieves triumph and success.",India,M
+Javash,"Speedy, swift; a person who moves with agility and quickness.",India,M
+Jayadev,God of victory; a divine figure associated with triumph and success.,India,M
+Jeevesh,Lord of life; a divine ruler or a person who cherishes and respects life.,India,M
+Jeevitha,"""Jeevitha"" signifies life, the essence of existence.",India,F
+Jeyawin,"Victorious, triumphant; someone who achieves success and glory.",India,M
+Jina,"Conqueror, victorious; someone who overcomes obstacles and achieves success.",China,X
+Jishinu,"Victorious and triumphant, succeeding in endeavors.",India,M
+Kaeya,Monsoon flower,India,F
+Kalikin,Dark-complexioned; someone with a complexion resembling that of the god Kali.,India,M
+Kalpesh,Lord of wishes; a divine figure who fulfills desires.,India,M
+Kanishar,"It means small or delicate, often used for endearment.",India,M
+Kanishka,"It means small or delicate, often used for endearment.",India,F
+Kannuku Iniyal,A name expressing sweetness and cherished love.,India,F
+Karmega kulali,"Signifies hard work, diligence, and industriousness.",India,F
+Karthick,Other name of gord Murugar,India,M
+Karun,"Compassionate, merciful; someone who shows kindness and empathy.",India,M
+Kavi,It denotes a poet or someone who expresses through verse.,India,X
+Kavin,"A name reflecting charm, attractiveness, and handsomeness.",India,M
+kayal,"Like a serene lake, embodying calmness and tranquility.",India,F
+kayalviliya,Charming and captivating like a picturesque lake.,India,F
+Kayan,"King, ruler; someone who holds authority and leadership.",India,M
+Keerthanan,Singer of glory; a person who praises and celebrates greatness and achievement.,India,M
+Kekin,Lord of wealth; a divine figure associated with prosperity and abundance.,China,M
+Kiash,"Pure, innocent; a person with a simple and untainted nature.",India,M
+Kirthika,"Derived from the name of the star ""Krittika"" in Hindu astrology; associated with power, authority, and determination.",India,F
+Kotheesh,Lord of happiness; a divine ruler or a person who brings joy and contentment.,India,M
+Krishiv,"Skilled, talented; a person with natural abilities and aptitude.",India,M
+Kuber,"God of wealth; a divine figure associated with prosperity, abundance, and riches.",China,M
+Lalith,"Graceful, elegant; someone who possesses charm and sophistication.",India,M
+Lalith Kumar,Graceful prince; someone who possesses elegance and nobility.,India,M
+Lalitkishore,Handsome and youthful; a person with attractive features and vitality.,India,M
+Lavanya,"""Kirthika"" signifies fame, celebrating individual achievements.",India,F
+Lei,Thunder,China,X
+Lian,"Lotus, waterlily; Waterfall; White silk; Skilled; (To become) great",China,F
+Lishanth,"Peaceful, tranquil; someone who brings calmness and serenity to others.",India,M
+Lithvik,"Splendid, glorious; a person who shines brightly with brilliance and excellence.",India,M
+Lohith,"Red, ruby-colored; a person with vibrant energy and passion.",India,M
+Lokajit,Conqueror of the world; a person who overcomes challenges and achieves success in life.,India,M
+Luca,bringer of light; from Lucania,Italy,X
+Luciana,light,Italy,X
+Madhu,"Sweet, like honey, bringing sweetness to life.",India,F
+Magur,Brave warrior; a courageous fighter on the battlefield.,India,M
+Mahilan,"Joyful, cheerful; someone who brings happiness and positivity to others.",India,M
+Maikar,A person who is determined and focused on their goals.,India,M
+Maisanth,Enlightened sage; a wise and knowledgeable spiritual guide.,India,M
+Mathin,"Strong, powerful; someone who possesses physical or mental strength.",India,M
+Menash,Remembered by God; a person who is cherished and acknowledged by the divine.,India,M
+Menosh,"Content, satisfied; someone who finds happiness and fulfillment in life.",India,M
+Mihir,Sun; Friend,India,M
+Mimesh,Lord of the mind; a divine figure associated with mental clarity and control.,India,M
+Mithran,"Friend, companion; a person who is loyal and supportive in friendship.",India,M
+Mithun,Symbolizes the concept of duality or pairing.,India,M
+Modhil,"Intelligent, wise; someone who possesses keen intellect and understanding.",China,M
+Mohana,"""Mohana"" describes someone enchanting or captivating.",India,F
+Mohdep,Lord of affection; a divine figure associated with love and compassion.,India,M
+Monish,"Thoughtful, wise; someone who possesses deep understanding and insight.",India,M
+Moshik,One who brings joy and happiness to others.,India,M
+Moulik,"Fundamental, essential; a person or thing that is basic and indispensable.",India,M
+Mulan,"Magnolia; Wood orchid; Soft, gentle; Bald",China,F
+Mysin,"Prosperous, wealthy; someone who enjoys abundance and affluence.",India,X
+Mythili,"Named after Sita, a character from Hindu mythology.",India,F
+Nandhini Priya,"Beloved like a goddess, dearly cherished.",India,F
+Nandhu,"Lord of beginnings, remover of obstacles, auspicious.",India,X
+Naren,"Human, man; a person who embodies the essence of humanity.",India,M
+Nathiya,"Constant, Eternal and brave girl ",India,F
+Naveen,"New, fresh, embodying youthful vigor.",India,M
+Nayak,"Leader, chief; someone who guides and inspires others.",India,M
+Neelesh,"Blue-colored, the abode of Lord Krishna; a divine or revered figure associated with the color blue or Lord Krishna.",India,M
+Neeraj,"Lotus, born from water; a symbol of purity and spiritual enlightenment.",India,M
+Nehan,"Love, affection; a person who is deeply caring and affectionate.",India,M
+Nibak,"A person who is reliable, trustworthy, and dependable.",India,M
+Nikethan,"Abode, dwelling place; a person who brings comfort and security to others.",India,M
+Nikhil,"Complete, entire; someone who encompasses all aspects and qualities.",India,M
+Nikil,"Complete and whole, encompassing everything.",India,M
+Nikilan,"Conqueror, victorious; someone who overcomes challenges and achieves success.",India,M
+Nikitha,Victories,India,F
+Nilan,Reflects darkness or the color of the night.,India,M
+Nilan,"Entire, complete; a person who encompasses all aspects.",India,M
+Nisha,Night,India,F
+Niswarth,"Selfless, altruistic; a person who acts for the benefit of others without selfish motives.",India,M
+Nithin,"Constant, eternal; someone who remains steadfast and unchanging",India,M
+Nithin,"Eternal, everlasting; someone who is timeless and enduring.",India,M
+Nithira,Conveys the idea of night or darkness.,India,F
+Niu,"Cute, young girl",China,F
+Nivish,"Ambitious, determined; someone with strong aspirations and goals.",India,M
+Obuli,"Brilliant, radiant; a person who shines brightly with intelligence.",India,M
+Omprasad,Divine blessing; a gift or favor bestowed by a divine entity.,India,M
+Oodeep,Radiant light; someone who shines brightly with inner brilliance and positivity.,China,M
+Orshan,"Radiant, shining; a person who exudes brightness and positivity.",China,M
+Paravath,Lord of the mountain; a divine figure associated with mountains or elevated terrain.,India,M
+Paravesh,"Crown, pinnacle; someone who is at the peak or pinnacle of achievement or status.",India,M
+Paresh,"Supreme, highest; someone who is superior or transcendent in nature.",India,M
+Parthiv,Son of the Earth; a person deeply connected to nature.,India,M
+Pon sudhakar,"Shining like the golden moon, symbolizing purity.",India,M
+Poojesh,"Worshipper, devotee; someone who reveres and honors the divine.",India,M
+poongulali,"""Poongulali"" denotes beauty like a blooming flower.",India,F
+poorana,"Complete, whole; a person who is fulfilled and satisfied in all aspects.",India,M
+Poorgan,"Blossoming, flourishing; someone who thrives and prospers.",India,M
+Poornajith,"Victorious, triumphant; a person who achieves complete victory and success.",India,M
+Poorvik,"Eastward, sunrise; someone associated with the direction of the rising sun.",India,M
+Prabhat,"Dawn, morning; a person who brings new beginnings and hope.",India,M
+Prajai,"Beloved, dear; someone who is cherished and loved by others.",India,M
+Prajesh,Lord of creatures; a divine figure associated with the protection and care of all beings.,India,M
+Prajith,"Victorious, triumphant; a person who conquers challenges and obstacles.",India,M
+Pranav,"Love, affection; a person who embodies deep care and attachment.",India,M
+Pranay,Lord of intellect; a divine figure associated with wisdom and knowledge.,India,M
+Pratheesh,"Brave, courageous; someone who exhibits valor and strength in the face of adversity.",India,M
+Pravesh,"Entrance, gateway; a person who signifies new beginnings and opportunities",India,M
+Pravin,Skilled; Talented,India,M
+Preethivi,"Beloved of the earth, cherished by all.",India,M
+Priya,"""Priya"" means beloved, dear, or cherished, symbolizing affection.",India,F
+Prveer,"Entrance, gateway; a person who signifies new beginnings and opportunities.",India,M
+Pugal,"Blossoming, flourishing; someone who thrives and prospers.",India,X
+Pugal Lathini,"""Victorious and graceful"" - a fusion of Tamil and Arabic.",India,F
+Puneeth,"Pure, clean; someone who is untainted and virtuous.",India,M
+Qi,"Life-force, positive energy; A fine jade; Outstanding",China,X
+Radesh,King of the night; a powerful ruler who commands darkness.,India,M
+Rajesh,"Ruler of Kings, God of Kings, Lord of Kings",India,M
+Rakesh,Lord of the full moon; a divine figure associated with the brilliance of the moon.,India,M
+Ranjan,"Pleasing, delightful; someone who brings joy and happiness.",India,M
+Raviteja,Rays of the sun; someone who emanates warmth and brightness like the sun.,India,F
+Revi,"""Sun"" - derived from Hebrew, symbolizing brightness and warmth.",India,M
+Reyan,Door of Heaven; a divine gateway to celestial realms;.,India,M
+Rishab,"Morality, righteousness; a person who upholds ethical principles.",India,M
+Rishikesh,Lord of the senses; a divine figure associated with control over one's senses.,India,M
+Rithu Yalini,"""Seasonal melody"" - a blend of Sanskrit and Tamil.",India,F
+Rithvin,"Intelligent, wise; a person who possesses keen intellect and understanding.",India,M
+Riyan,Door of Heaven; a divine gateway to celestial realms,India,M
+Rocco,"Rock; crow, rook; Rest, repose",Italy,X
+Rohinish,Lord of the night; a divine figure associated with darkness.,India,M
+Roopkumar,Embodiment of beauty; a person with a charming appearance.,India,M
+Roothik,"Red, fiery; someone with a passionate and energetic nature",India,M
+Rubini,"Beautiful like a ruby, precious and valuable.",India,F
+Rudgresh,Lord of destruction; a divine figure associated with the process of dissolution.,India,M
+Rudhran,"Rudhran: Furious, fierce; a person who exhibits intense strength and power.",India,M
+Rudvik,"Brave, courageous; someone who displays strength and valor.",India,M
+Runesh,Lord of the night; a divine figure associated with darkness and mystery.,India,M
+Runith,"Guided, directed; someone who follows a predetermined path or plan",India,M
+Sai sudharsan," Possessing divine insight, auspicious vision.",India,M
+Saicharan,"Guided, directed; someone who follows a predetermined path or plan",India,M
+Saiganesh,"Lord Ganesha; a divine figure associated with wisdom, intellect, and prosperity.",India,M
+Sailesh,Lord of the mountain; a divine figure associated with strength and stability.,India,M
+Sainath,Lord Sai; a divine figure worshipped for his compassion and miracles.,India,M
+Samaran,"Warlike, battle-ready; someone who is prepared for conflict or struggle.",India,M
+Samesh,Lord of equality; a divine figure associated with justice and fairness.,India,M
+Sandeep,Light of knowledge; a person who brings enlightenment and understanding.,India,M
+Sandhiya,Twilight or Dusk. Evoking the serene and mystical atmosphere of the transition between day and night,India,F
+Sanjay,"It means triumphant or victorious, indicating success.",India,M
+Sanjayan,"Victorious, triumphant; a person who achieves success and victory.",India,M
+Sanjiv,"Bringing back to life, Living, Reviving",India,M
+Sankalp,"Determination, resolve; someone with strong willpower and commitment.",India,M
+Santhosh,Happy person ,India,M
+Saranya,This name conveys the idea of being a shelter or refuge.,India,F
+Sarvajith,Conqueror of all; someone who triumphs over all challenges and obstacles.,India,M
+Sarvesh,Lord of all; a divine ruler who governs over everything.,India,M
+Sarvin,"Winner, victorious; a person who achieves success and triumph in various aspects of life.",India,M
+Sarvin,"Winner, conqueror; someone who achieves victory and success.",India,M
+Sastick,"Ruler, leader; a person who has leadership qualities and authority.",India,M
+Sastika,A name representing auspiciousness and good fortune.,India,F
+Sathaya,"Truthful and sincere, always honest in dealings.",India,F
+Sathvik,"Pure, virtuous; a person of sincerity and goodness.",India,M
+Satish,"Victorious, God of Truth, Lord of Hundreds",India,M
+Seyon,"Lord Murugan; a divine figure associated with Lord Murugan, the Hindu god of war and victory.",India,X
+Sham,"Peace, tranquility; a person who brings calmness and serenity to others.",India,F
+Sharvil,"Energetic, dynamic; someone who exudes vitality and vigor.",India,X
+Shastik,"Skilled, adept; someone who is proficient and talented in their endeavors.",India,M
+Shen,"Liquid; Faithful; Cautious; Spirit, divinity; Deep; Mysterious; Amulet; Encircle",China,X
+Shi,"Lion, tiger; a person with strength, courage, and ferocity.",India,F
+Shravas,"Renowned, famous; a person who is celebrated and well-known for their achievements.",India,M
+Shreyas,"Auspicious, fortunate; a person blessed with luck and success.",India,M
+Sinoth,"Calm, composed; someone who maintains tranquility and poise.",India,M
+Sohith,"Suitable, fitting; a person who is appropriate and well-suited for any situation.",India,M
+Song,"Strong, powerful; Soothing",China,X
+Sowmiya,"A name that represents grace, gentleness, and pleasantness.",India,M
+Sreesanth,"Prosperous, successful; someone who achieves great success and prosperity.",India,M
+Sri,"Symbolizes prosperity, wealth, and auspiciousness.",India,X
+Srihinth,"Blessed, fortunate; a person who is endowed with good fortune and blessings.",India,M
+Srijan,"Creation, innovation; someone who brings new ideas into existence.",India,M
+Srikanth,"Auspicious, blessed by deities like Lakshmi and Shiva.",India,M
+Srimanth,"Wealthy, prosperous; someone who possesses wealth and abundance",India,M
+Srinath,Protector of Lakshmi; a guardian of wealth and prosperity.,India,M
+Srinesh,Lord of wealth; a person who is affluent and prosperous,India,M
+Sripal,Protector of wealth; someone who safeguards and manages wealth responsibly.,India,M
+Subash,"Eloquent, fragrant; a person who speaks well and has a pleasant personality.",India,M
+Subin,"Pleasant, agreeable; someone who is easy to get along with.",India,M
+Subodh,"Learned, wise; someone who possesses deep knowledge and understanding.",India,M
+Sudeep,"Bright, radiant; someone who shines with intelligence and wisdom.",India,M
+Sudheesh,"Intelligent, bright; a person who is clever and perceptive.",India,M
+Sudhir,"Resolute, brave; someone who is determined and courageous",India,M
+Sugan,"Pleasant, agreeable; someone who is easy to get along with.",India,M
+Sugi,"Beloved, dear; a person who is cherished and loved by others.",India,X
+Sujay,"A great victory, triumph",India,M
+Sujeevan,One who lives with grace; a person who embodies harmony and balance.,India,M
+Sujith,"Victory, success; a person who achieves triumph and success in endeavors.",India,M
+Sunil,"Dark blue, sapphire; a person associated with the deep blue color, symbolizing depth and stability.",India,M
+Sushanth,"Peaceful, calm; someone who is serene and tranquil in nature.",India,M
+Suthran,"Well-organized, methodical; a person who is systematic and efficient in their approach.",India,M
+Suthran,"Similar to the previous meaning, well-organized, methodical; a person who is systematic and efficient in their approach.",India,M
+Suveen,"Beautiful, graceful; a person with an elegant and refined demeanor.",India,M
+Swaranarubini,"Golden beauty, radiant and graceful.",India,F
+Swasthika,A symbol of auspiciousness and well-being.,India,F
+Sweatha,"Pure, innocent, untainted by worldly concerns.",India,F
+Tasvanth,Lord of wealth; a divine figure associated with prosperity and abundance.,India,M
+Taswin,"Creative, innovative; someone who has original ideas and is inventive.",India,M
+Tejasvin,"Radiant, full of energy; someone who shines brightly with brilliance and vitality.",India,M
+Thaksith,"Hardworking, industrious; a person who is diligent and committed to their work.",India,M
+Thalir Mithran ,"Thalir is a ""Budding friend"" - a combination of Tamil and Sanskrit and Mithran is other name of god Murugar",India,M
+Thasvik,"Radiant, brilliant; someone who shines with brightness and positivity.",India,M
+Theeran,"Brave, courageous; a person who faces challenges with strength and valor.",India,M
+Thishiyan,"Wise, learned; someone who possesses great knowledge and understanding.",India,M
+Trivikram,One who has crossed three worlds; a divine figure who encompasses the universe.,India,M
+Tulsi,"Holy basil, sacred plant",India,F
+Udaykiran,Rising sun; a person who brings light and warmth into others' lives.,India,M
+Udeep,"Rising, ascendant; someone who is on the path to success and prominence.",India,M
+Ugrasen,Mighty ruler; a powerful and authoritative leader.,India,M
+Urmilan,Encompassing waves; a person who has a broad and far-reaching impact.,India,M
+Vagini,"Melodious and enchanting, like a captivating voice.",India,F
+Vaishnav,Devotee of Lord Vishnu; someone who is devoted to the worship and service of Lord Vishnu.,India,M
+Vajin,"Swift, fast; someone who is quick and agile in their actions",India,M
+Vajresh,"Thunderbolt, powerful; a force to be reckoned with, unstoppable.",India,M
+Vamsi,Flute of Lord Krishna; a musical instrument associated with divinity and melody.,India,M
+Varshini,"Like rain, symbolizing abundance and blessings.",India,F
+Vibin,"Full of life, lively; someone who is energetic and vibrant.",India,M
+Vibu,"Supreme, omnipresent; a person who is all-encompassing and widespread.",India,M
+Vidhya,"Knowledgeable, wise, possessing intellectual prowess.",India,F
+Vidul,"Full of knowledge, wise; someone who possesses deep understanding and intelligence",India,M
+Vidul,"Full of knowledge, wise; someone who possesses deep understanding and intelligence.",India,M
+Vignesh,Other name of god Ganesh,India,M
+Vihaan,"Dawn, morning; a person who brings new beginnings and hope.",India,M
+Vijay,"This name symbolizes victory, triumph, and success.",India,M
+Vikash,"Progress, development; someone who is constantly growing and evolving.",India,M
+Vilas,"Play, charm; a person who exudes grace and has an enchanting presence.",India,M
+Vinay,"Modesty, humility; someone who displays grace and humility.",India,M
+Vinay,"Modesty, humility; someone who displays grace and humility in their demeanor.",India,M
+Vineeth,"Humble, modest; someone who displays humility and gentleness in their behavior.",India,M
+Vinith,"Knowledgeable, wise; a person who possesses wisdom and understanding.",India,M
+Vinu,"Modest, simple; someone who is unassuming and down-to-earth in nature.",India,M
+Vishinu,"Infinite and omnipresent, encompassing everything.",India,M
+Vishva,"Universe, world; a person who encompasses all existence.",India,M
+Vithun,"Reflects multiplication or increase, a growing force.",India,M
+Viyash,"Glorious, illustrious; someone who shines with excellence and brilliance.",India,M
+Wen,Cultured; Literate,China,M
+Xian,Present; Elegant; Virtuous; Admire,China,X
+Xiao,"Dreary, mournful; Dawn; Young; Little",China,X
+Yadav,"Descendant of Yadu; a person belonging to the Yadu dynasty, often associated with Lord Krishna.",India,M
+Yadvik,"Knowledgeable, wise; someone who possesses deep understanding and insight.",India,M
+Yagnesh,"Knowledgeable, wise; someone who possesses deep understanding and insight.",India,M
+Yakshith,"Permanent, stable; someone who is steadfast and enduring.",India,M
+Yan,Beautiful,China,F
+Yash,"Fame, glory; someone who achieves recognition and admiration.",India,M
+Yashvanth,"Victorious, triumphant; a person who conquers challenges and obstacles.",India,M
+Yashvin,"Glorious, victorious; someone who achieves fame and success.",India,M
+Yaswanth,"Eternal, everlasting, standing the test of time.",India,M
+Yee,"Countryside; Plum; Happy, joy; Harmony",China,F
+Yegan,"Unique, incomparable; a person who stands out due to their exceptional qualities.",India,M
+Yeman,"Affectionate, loving; someone who is kind-hearted and caring.",India,M
+Ying,Answer; Clever; Brave,China,X
+Yugan,"Youthful, energetic, vibrant in spirit.",India,M
+Yugender,God of the era; a divine figure associated with the current age or epoch.,India,M
+Yuvansh,"Youthful, young; someone who embodies youthfulness and vitality.",India,M
+Zhan,"Valuable, Genuine, Innocent; Deep",China,X

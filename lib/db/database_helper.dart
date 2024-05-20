@@ -75,5 +75,15 @@ class DatabaseHelper {
     Database db = await database;
     await db.rawUpdate('UPDATE $_tableName SET rejected_name = ? WHERE id = ?', [rejected, id]);
   }
+
+  Future<List<Map<String, dynamic>>> getDataByGenderAndNationality(String gender, String nationality) async {
+    Database db = await database;
+    if (nationality.isEmpty) {
+      return await db.query(_tableName, where: 'gender = ?', whereArgs: [gender]);
+    } else {
+      return await db.query(_tableName, where: 'gender = ? AND nationality = ?', whereArgs: [gender, nationality]);
+    }
+  }
+
 }
 
