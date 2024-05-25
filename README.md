@@ -1,4 +1,4 @@
-# babynames
+# babyname
 
 A new Flutter project.
 

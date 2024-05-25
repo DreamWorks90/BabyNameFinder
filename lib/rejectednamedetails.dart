@@ -1,15 +1,16 @@
+import 'package:babyname/db/database_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:babynames/BottomNavigationBar/likednames.dart';
-import 'package:babynames/db/database_helper.dart';
 
 class RejectnamedetailsWidget extends StatefulWidget {
   final String meaning;
   final String name;
 
-  const RejectnamedetailsWidget({Key? key,  this.meaning='', required this.name}) : super(key: key);
+  const RejectnamedetailsWidget(
+      {super.key, this.meaning = '', required this.name});
 
   @override
-  _RejectnamedetailsWidgetState createState() => _RejectnamedetailsWidgetState();
+  _RejectnamedetailsWidgetState createState() =>
+      _RejectnamedetailsWidgetState();
 }
 
 class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
@@ -31,7 +32,8 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
         _currentIndex = 0;
       }
       // Iterate until a name with liked_name = 1 is found or reached the end of the list
-      while (_currentIndex < data.length && data[_currentIndex]['rejected_name'] != 1) {
+      while (_currentIndex < data.length &&
+          data[_currentIndex]['rejected_name'] != 1) {
         _currentIndex++;
         if (_currentIndex >= data.length) {
           _currentIndex = 0; // Wrap around to the beginning if reached the end
@@ -52,7 +54,8 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
       while (_currentIndex >= 0 && data[_currentIndex]['rejected_name'] != 1) {
         _currentIndex--;
         if (_currentIndex < 0) {
-          _currentIndex = data.length - 1; // Wrap around to the end if reached the beginning
+          _currentIndex = data.length -
+              1; // Wrap around to the end if reached the beginning
         }
       }
     });
@@ -61,15 +64,13 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map<String, dynamic>>>(
-
       future: _nameData,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
-          final data = snapshot.data!;
           final name = widget.name;
           final meaning = widget.meaning;
 
@@ -88,7 +89,7 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
                   const SizedBox(height: 60.0),
                   Image.asset('assets/image/babyexplore.png'),
                   const SizedBox(height: 30.0),
-                  Container(
+                  SizedBox(
                     width: 350, // Set the width of the container
                     child: Card(
                       color: Colors.lightBlue,
@@ -102,7 +103,7 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
                           children: <Widget>[
                             Text(
                               name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 24.0,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -110,7 +111,7 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
                             ),
                             const SizedBox(height: 10.0),
                             const SizedBox(height: 10.0),
-                            Text(
+                            const Text(
                               'Name Meaning',
                               style: TextStyle(
                                 fontSize: 16.0,
@@ -122,7 +123,7 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
                             Text(
                               meaning,
                               textAlign: TextAlign.justify,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 16.0,
                               ),
@@ -133,12 +134,11 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
                               children: <Widget>[
                                 GestureDetector(
                                   onTap: () {
-
-                                    onPressed: () {
-                                      _updateLikedNameAndRemoveItem('id' as int);
+                                    () {
+                                      _updateLikedNameAndRemoveItem(
+                                          'id' as int);
                                     };
-
-                      },
+                                  },
                                   // async {
                                   //   final data = await _nameData;
                                   //   final currentName = data[_currentIndex];
@@ -150,7 +150,8 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
                                   //   });
                                   // },
 
-                                  child: Image.asset('assets/image/rejectedname.png'),
+                                  child: Image.asset(
+                                      'assets/image/rejectedname.png'),
                                 ),
 
                                 // SizedBox(width: 50), // Added for spacing
@@ -182,7 +183,9 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
                     child: Stack(
                       children: [
                         Transform.rotate(
-                          angle: 380 * 3.1415927 / 189, // Rotating image by 90 degrees
+                          angle: 380 *
+                              3.1415927 /
+                              189, // Rotating image by 90 degrees
                           child: Image.asset(
                             'assets/image/baby-clothes.png', // Image Widget
                           ),
@@ -190,8 +193,10 @@ class _RejectnamedetailsWidgetState extends State<RejectnamedetailsWidget> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 5.0), // Removed the SizedBox and added direct spacing
-                  Text(
+                  const SizedBox(
+                      height:
+                          5.0), // Removed the SizedBox and added direct spacing
+                  const Text(
                     '<< Rejected Name >>',
                     style: TextStyle(
                       color: Colors.white,

@@ -1,16 +1,16 @@
-import "package:babynames/BottomNavigationBar/likednames.dart";
-import "package:babynames/BottomNavigationBar/matchesname.dart";
-import "package:babynames/Gender/boypage.dart";
-import "package:babynames/Gender/girlpage.dart";
-import "package:babynames/Gender/notsure.dart";
-import "package:babynames/settings/settings.dart";
+import "package:babyname/BottomNavigationBar/likednames.dart";
+import "package:babyname/BottomNavigationBar/matchesname.dart";
+import "package:babyname/Gender/boypage.dart";
+import "package:babyname/Gender/girlpage.dart";
+import "package:babyname/Gender/notsure.dart";
+import "package:babyname/settings/settings.dart";
 import "package:flutter/material.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 class GenderPage extends StatefulWidget {
   final String selectedNationality;
 
-  const GenderPage({Key? key, required this.selectedNationality}) : super(key: key);
+  const GenderPage({super.key, required this.selectedNationality});
 
   @override
   _GenderPageState createState() => _GenderPageState();
@@ -19,18 +19,21 @@ class GenderPage extends StatefulWidget {
 class _GenderPageState extends State<GenderPage> {
   late String _selectedNationality; // Declare selectedNationality variable
 
-  int _currentIndex = 0; // Index of the current page
+// Index of the current page
   @override
   void initState() {
     super.initState();
     _loadSelectedNationality(); // Load selected nationality from shared preferences
   }
+
   Future<void> _loadSelectedNationality() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _selectedNationality = prefs.getString('selectedNationality') ?? ''; // Retrieve selected nationality
+      _selectedNationality = prefs.getString('selectedNationality') ??
+          ''; // Retrieve selected nationality
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +90,9 @@ class _GenderPageState extends State<GenderPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => BoypageWidget(selectedNationality: _selectedNationality),
+                                  builder: (context) => BoypageWidget(
+                                      selectedNationality:
+                                          _selectedNationality),
                                 ),
                               );
                             },
@@ -122,8 +127,11 @@ class _GenderPageState extends State<GenderPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => GirlpageWidget(selectedNationality: _selectedNationality),
-                                ),                              );
+                                  builder: (context) => GirlpageWidget(
+                                      selectedNationality:
+                                          _selectedNationality),
+                                ),
+                              );
                             },
                             icon: Image.asset(
                                 'assets/image/girl.png'), // Adjust path accordingly
@@ -160,8 +168,11 @@ class _GenderPageState extends State<GenderPage> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                  MaterialPageRoute(
-                                  builder: (context) => NotsurepageWidget(selectedNationality: _selectedNationality),),
+                                MaterialPageRoute(
+                                  builder: (context) => NotsurepageWidget(
+                                      selectedNationality:
+                                          _selectedNationality),
+                                ),
                               );
                             },
                             icon: Image.asset(
@@ -195,19 +206,19 @@ class _GenderPageState extends State<GenderPage> {
         ),
       ),
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
             ),
           ),
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -257,18 +268,22 @@ class _GenderPageState extends State<GenderPage> {
       ),
     );
   }
+
   void _navigateToPage(int index) {
     switch (index) {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
+          MaterialPageRoute(
+              builder: (context) => const GenderPage(
+                    selectedNationality: '',
+                  )),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const likednamepage()),
+          MaterialPageRoute(builder: (context) => const LikedNamePage()),
         );
         break;
       case 2:

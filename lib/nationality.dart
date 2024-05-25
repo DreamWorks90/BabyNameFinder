@@ -1,5 +1,4 @@
-import 'package:babynames/Gender/genderselection.dart';
-import 'package:babynames/invitepage.dart';
+import 'package:babyname/Gender/genderselection.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -114,7 +113,10 @@ class _NationalityPageState extends State<NationalityPage> {
                     if (_selectedNationality != null) {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => GenderPage(selectedNationality: _selectedNationality ?? '')),
+                        MaterialPageRoute(
+                            builder: (context) => GenderPage(
+                                selectedNationality:
+                                    _selectedNationality ?? '')),
                       );
                     } else {
                       showDialog(
@@ -137,7 +139,8 @@ class _NationalityPageState extends State<NationalityPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 50),
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -174,7 +177,8 @@ class _NationalityPageState extends State<NationalityPage> {
       setState(() {
         _selectedNationality = selectedNationality;
         _prefs.setBool('showNationalityPage', false);
-        _prefs.setString('selectedNationality', selectedNationality); // Save selected nationality
+        _prefs.setString('selectedNationality',
+            selectedNationality); // Save selected nationality
       });
     }
   }
@@ -210,7 +214,9 @@ class __NationalitySearchState extends State<_NationalitySearch> {
   void _onSearchChanged() {
     setState(() {
       _filteredNationalities = widget.nationalities
-          .where((nationality) => nationality.toLowerCase().contains(_searchController.text.toLowerCase()))
+          .where((nationality) => nationality
+              .toLowerCase()
+              .contains(_searchController.text.toLowerCase()))
           .toList();
     });
   }

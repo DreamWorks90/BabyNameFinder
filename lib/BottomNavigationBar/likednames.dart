@@ -1,20 +1,18 @@
+import 'package:babyname/BottomNavigationBar/matchesname.dart';
+import 'package:babyname/Gender/genderselection.dart';
+import 'package:babyname/db/database_helper.dart';
+import 'package:babyname/settings/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:babynames/db/database_helper.dart';
-import 'package:babynames/likednamedetails.dart';
-import 'package:babynames/Gender/genderselection.dart';
-import 'package:babynames/settings/settings.dart';
-import 'package:babynames/BottomNavigationBar/matchesname.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class likednamepage extends StatefulWidget {
-  const likednamepage({Key? key}) : super(key: key);
+class LikedNamePage extends StatefulWidget {
+  const LikedNamePage({super.key});
 
   @override
-  _likednamepageState createState() => _likednamepageState();
+  _LikedNamePageState createState() => _LikedNamePageState();
 }
 
-class _likednamepageState extends State<likednamepage> {
-  int _currentIndex = 1; // Index of the current page
+class _LikedNamePageState extends State<LikedNamePage> {
+// Index of the current page
   // late BannerAd _bannerAd;
   // bool _isBannerAdLoaded = false;
 
@@ -48,15 +46,17 @@ class _likednamepageState extends State<likednamepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Liked Names',
           style: TextStyle(
             color: Colors.white, // Set text color to white
             fontWeight: FontWeight.bold, // Set font weight to bold
           ),
         ),
-        backgroundColor: Colors.blue, // Setting app bar background color to blue
-        iconTheme: IconThemeData(color: Colors.white), // Set back arrow color to white
+        backgroundColor:
+            Colors.blue, // Setting app bar background color to blue
+        iconTheme: const IconThemeData(
+            color: Colors.white), // Set back arrow color to white
       ),
       backgroundColor: Colors.blue, // Setting app bar background color to blue
       body: Container(
@@ -65,7 +65,7 @@ class _likednamepageState extends State<likednamepage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Find the list of liked names', // Text in white color
               style: TextStyle(
                 color: Colors.white,
@@ -73,13 +73,13 @@ class _likednamepageState extends State<likednamepage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16.0), // Added space
+            const SizedBox(height: 16.0), // Added space
             Expanded(
               child: FutureBuilder<List<Map<String, dynamic>>>(
                 future: DatabaseHelper().getDataByLikedName('1'),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else if (snapshot.hasError) {
@@ -87,7 +87,8 @@ class _likednamepageState extends State<likednamepage> {
                       child: Text('Error: ${snapshot.error}'),
                     );
                   } else {
-                    final List<Map<String, dynamic>> likedNames = snapshot.data!;
+                    final List<Map<String, dynamic>> likedNames =
+                        snapshot.data!;
                     return ListView.builder(
                       itemCount: likedNames.length,
                       itemBuilder: (context, index) {
@@ -111,13 +112,13 @@ class _likednamepageState extends State<likednamepage> {
                             child: ListTile(
                               title: Text(
                                 name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               subtitle: Text(meaning),
                               trailing: IconButton(
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.favorite,
                                   color: Colors.red,
                                 ),
@@ -139,14 +140,14 @@ class _likednamepageState extends State<likednamepage> {
       ),
 
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
         ),
-        padding: EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -195,7 +196,7 @@ class _likednamepageState extends State<likednamepage> {
                 ),
               ],
             ),
-           // SizedBox(height: 10), // Added space
+            // SizedBox(height: 10), // Added space
             // if (_isBannerAdLoaded)
             //   Stack(
             //     alignment: Alignment.topRight,
@@ -235,11 +236,14 @@ class _likednamepageState extends State<likednamepage> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
+          MaterialPageRoute(
+              builder: (context) => const GenderPage(
+                    selectedNationality: '',
+                  )),
         );
         break;
       case 1:
-      // Do nothing as we are already on the liked names page
+        // Do nothing as we are already on the liked names page
         break;
       case 2:
         Navigator.push(

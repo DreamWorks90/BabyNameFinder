@@ -1,12 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:babynames/db/database_helper.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
+import 'package:babyname/db/database_helper.dart';
 
 class NotsurepageWidget extends StatefulWidget {
   final String selectedNationality;
 
-  const NotsurepageWidget({Key? key, required this.selectedNationality}) : super(key: key);
+  const NotsurepageWidget({super.key, required this.selectedNationality});
 
   @override
   _NotsurepageWidgetState createState() => _NotsurepageWidgetState();
@@ -17,11 +19,13 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
   int _currentIndex = 0;
   late InterstitialAd _interstitialAd;
   bool _isInterstitialAdReady = false;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   void initState() {
     super.initState();
-    _nameData = DatabaseHelper().getDataByGenderAndNationality('X', widget.selectedNationality);
+    _nameData = DatabaseHelper()
+        .getDataByGenderAndNationality('X', widget.selectedNationality);
     _loadInterstitialAd();
     _loadCurrentIndex();
   }
@@ -66,8 +70,6 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
   void _showInterstitialAd() {
     if (_isInterstitialAdReady) {
       _interstitialAd.show();
-    } else {
-      print('Interstitial ad is not ready yet.');
     }
   }
 
@@ -93,6 +95,29 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
 
     if ((_currentIndex + 1) % 10 == 0) {
       _showInterstitialAd(); // Show interstitial ad after every 10 names
+    }
+  }
+
+  Future<void> _saveLikedNameToFirestore(int nameId) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? udid = prefs.getString('udid');
+
+      if (udid != null) {
+        print('Saving liked name to Firestore: $nameId for user: $udid');
+        await _firestore
+            .collection('users')
+            .doc(udid)
+            .collection('liked_names')
+            .add({
+          'name_id': nameId,
+        });
+        print('Saved liked name to Firestore successfully');
+      } else {
+        print('Error: UDID not found in SharedPreferences');
+      }
+    } catch (e) {
+      print('Error saving to Firestore: $e');
     }
   }
 
@@ -149,18 +174,6 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
                                 ),
                               ),
                               const SizedBox(height: 25.0),
-                              // const SizedBox(
-                              //   height: 48, // Set fixed height for the meaning
-                              //   child: Text(
-                              //     'Name Meaning',
-                              //     style: TextStyle(
-                              //       fontSize: 16.0,
-                              //       color: Colors.white,
-                              //       fontWeight: FontWeight.bold,
-                              //     ),
-                              //   ),
-                              // ),
-                              // const SizedBox(height: 10.0),
                               Expanded(
                                 child: SingleChildScrollView(
                                   child: Text(
@@ -176,7 +189,7 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
                               const SizedBox(height: 10.0),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
                                   GestureDetector(
                                     onTap: () async {
@@ -185,7 +198,7 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
                                       final int id = currentName['id'];
                                       await DatabaseHelper()
                                           .updateLikedName(id, 1);
-                                      // Update UI to reflect the change if needed
+                                      await _saveLikedNameToFirestore(id);
                                       setState(() {
                                         currentName['liked_name'] = 1;
                                       });
@@ -197,7 +210,7 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
                                   GestureDetector(
                                     onTap: _navigateToNextName,
                                     child:
-                                    Image.asset('assets/image/recycle.png'),
+                                        Image.asset('assets/image/recycle.png'),
                                   ),
                                   const SizedBox(width: 50),
                                   GestureDetector(
@@ -207,7 +220,6 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
                                       final int id = currentName['id'];
                                       await DatabaseHelper()
                                           .updateRejectedName(id, 1);
-                                      // Update UI to reflect the change if needed
                                       setState(() {
                                         currentName['rejected_name'] = 1;
                                       });
@@ -240,7 +252,7 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
                   ),
                   const SizedBox(height: 5.0),
                   const Text(
-                    '<< Slide to unveil the  lovely name >>',
+                    '<< Slide to unveil the lovely name >>',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 15.0,

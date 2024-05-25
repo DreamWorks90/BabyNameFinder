@@ -1,14 +1,12 @@
-import 'package:babynames/BottomNavigationBar/likednames.dart';
-import 'package:babynames/rejectednamedetails.dart';
+import 'package:babyname/BottomNavigationBar/likednames.dart';
+import 'package:babyname/db/database_helper.dart';
+import 'package:babyname/settings/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:babynames/db/database_helper.dart';
-import '../../db/database_helper.dart';
-import 'package:babynames/Gender/genderselection.dart';
-import 'package:babynames/likednamedetails.dart';
-import 'package:babynames/settings/settings.dart';
+
+import '../Gender/genderselection.dart';
 
 class rejectednamepage extends StatefulWidget {
-  const rejectednamepage({Key? key}) : super(key: key);
+  const rejectednamepage({super.key});
 
   @override
   _rejectednamepageState createState() => _rejectednamepageState();
@@ -21,15 +19,17 @@ class _rejectednamepageState extends State<rejectednamepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Rejected Names',
           style: TextStyle(
             color: Colors.white, // Set text color to white
             fontWeight: FontWeight.bold, // Set font weight to bold
           ),
         ),
-        backgroundColor: Colors.blue, // Setting app bar background color to blue
-        iconTheme: IconThemeData(color: Colors.white), // Set back arrow color to white
+        backgroundColor:
+            Colors.blue, // Setting app bar background color to blue
+        iconTheme: const IconThemeData(
+            color: Colors.white), // Set back arrow color to white
       ),
       backgroundColor: Colors.blue, // Setting app bar background color to blue
       body: Container(
@@ -38,7 +38,7 @@ class _rejectednamepageState extends State<rejectednamepage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Find the list of Rejected names', // Text in white color
               style: TextStyle(
                 color: Colors.white,
@@ -46,13 +46,13 @@ class _rejectednamepageState extends State<rejectednamepage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16.0), // Added space
+            const SizedBox(height: 16.0), // Added space
             Expanded(
               child: FutureBuilder<List<Map<String, dynamic>>>(
                 future: DatabaseHelper().getDataByRejectedName('1'),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   } else if (snapshot.hasError) {
@@ -60,7 +60,8 @@ class _rejectednamepageState extends State<rejectednamepage> {
                       child: Text('Error: ${snapshot.error}'),
                     );
                   } else {
-                    final List<Map<String, dynamic>> rejectedNames = snapshot.data!;
+                    final List<Map<String, dynamic>> rejectedNames =
+                        snapshot.data!;
                     return ListView.builder(
                       itemCount: rejectedNames.length,
                       itemBuilder: (context, index) {
@@ -84,13 +85,13 @@ class _rejectednamepageState extends State<rejectednamepage> {
                             child: ListTile(
                               title: Text(
                                 name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               subtitle: Text(meaning),
                               trailing: IconButton(
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.favorite,
                                   //color: Colors.red,
                                 ),
@@ -157,19 +158,25 @@ class _rejectednamepageState extends State<rejectednamepage> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
+          MaterialPageRoute(
+              builder: (context) => const GenderPage(
+                    selectedNationality: '',
+                  )),
         );
         break;
       case 1:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const likednamepage()),
+          MaterialPageRoute(builder: (context) => const LikedNamePage()),
         );
         break;
       case 2:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
+          MaterialPageRoute(
+              builder: (context) => const GenderPage(
+                    selectedNationality: '',
+                  )),
         );
         break;
       case 3:

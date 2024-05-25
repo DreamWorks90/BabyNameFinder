@@ -1,11 +1,11 @@
-import 'package:babynames/Gender/genderselection.dart';
-import 'package:babynames/nationality.dart';
-import 'package:babynames/settings/rejectednames.dart';
+import 'package:babyname/Gender/genderselection.dart';
 import 'package:flutter/material.dart';
 
 import '../invitepage.dart';
 import '../BottomNavigationBar/likednames.dart';
 import '../BottomNavigationBar/matchesname.dart';
+import '../nationality.dart';
+import 'rejectednames.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -15,7 +15,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  int _currentIndex = 3; // Index of the current page
+// Index of the current page
 
   @override
   Widget build(BuildContext context) {
@@ -54,19 +54,19 @@ class _SettingsPageState extends State<SettingsPage> {
         },
       ),
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
             ),
           ),
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -160,13 +160,16 @@ class _SettingsPageState extends State<SettingsPage> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
+          MaterialPageRoute(
+              builder: (context) => const GenderPage(
+                    selectedNationality: '',
+                  )),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const likednamepage()),
+          MaterialPageRoute(builder: (context) => const LikedNamePage()),
         );
         break;
       case 2:
@@ -194,7 +197,10 @@ class _SettingsPageState extends State<SettingsPage> {
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
+          MaterialPageRoute(
+              builder: (context) => const GenderPage(
+                    selectedNationality: '',
+                  )),
         );
         break;
       case 2:
@@ -212,7 +218,7 @@ class _SettingsPageState extends State<SettingsPage> {
       case 4:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const likednamepage()),
+          MaterialPageRoute(builder: (context) => const LikedNamePage()),
         );
         break;
     }

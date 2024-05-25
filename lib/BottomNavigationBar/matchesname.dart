@@ -1,4 +1,4 @@
-import 'package:babynames/Gender/genderselection.dart';
+import 'package:babyname/Gender/genderselection.dart';
 import 'package:flutter/material.dart';
 
 import 'likednames.dart';
@@ -9,12 +9,9 @@ class matchesnamepage extends StatefulWidget {
 
   @override
   _matchesnamepage createState() => _matchesnamepage();
-
-  _matchesnamepagestate() {}
 }
 
 class _matchesnamepage extends State<matchesnamepage> {
-  int _currentIndex = 2;
   final List<String> likedNames = [
     "Emma",
     "Liam",
@@ -46,19 +43,19 @@ class _matchesnamepage extends State<matchesnamepage> {
         ),
       ),
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
             ),
           ),
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -114,13 +111,16 @@ class _matchesnamepage extends State<matchesnamepage> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const GenderPage(selectedNationality: '',)),
+          MaterialPageRoute(
+              builder: (context) => const GenderPage(
+                    selectedNationality: '',
+                  )),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const likednamepage()),
+          MaterialPageRoute(builder: (context) => const LikedNamePage()),
         );
         break;
       case 2:

@@ -1,6 +1,6 @@
 {
-    "name": "babynames",
-    "short_name": "babynames",
+    "name": "babyname",
+    "short_name": "babyname",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

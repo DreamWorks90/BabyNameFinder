@@ -1,4 +1,4 @@
-import 'package:babynames/invitepage.dart';
+import 'package:babyname/invitepage.dart';
 import 'package:flutter/material.dart';
 
 class BabyPage extends StatefulWidget {

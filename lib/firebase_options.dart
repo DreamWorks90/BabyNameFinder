@@ -41,48 +41,48 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyD_caM3iNEHtN_KRpcvjFuJOqCn2LcxAkY',
-    appId: '1:649091699442:web:569ec5792a76671ffaf66b',
-    messagingSenderId: '649091699442',
-    projectId: 'baby-name-finder-f2391',
-    authDomain: 'baby-name-finder-f2391.firebaseapp.com',
-    storageBucket: 'baby-name-finder-f2391.appspot.com',
-    measurementId: 'G-7GRCMH0WDV',
+    apiKey: 'AIzaSyAaoBhOlPW5Zbrlb12xGXSNKzrqA-Qiyc8',
+    appId: '1:557743982531:web:dd319becac74373f979f76',
+    messagingSenderId: '557743982531',
+    projectId: 'baby-name-finder-93f67',
+    authDomain: 'baby-name-finder-93f67.firebaseapp.com',
+    storageBucket: 'baby-name-finder-93f67.appspot.com',
+    measurementId: 'G-K69WLRQR8L',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDlzbdCD8B55NIBScFb_T4Z4ZB8Zoy-NJU',
-    appId: '1:649091699442:android:d59a42f1740f41dafaf66b',
-    messagingSenderId: '649091699442',
-    projectId: 'baby-name-finder-f2391',
-    storageBucket: 'baby-name-finder-f2391.appspot.com',
+    apiKey: 'AIzaSyAUBllnixtN-RNzUhllwJcIE3fZr0wsCjY',
+    appId: '1:557743982531:android:4c9e75887cee36ca979f76',
+    messagingSenderId: '557743982531',
+    projectId: 'baby-name-finder-93f67',
+    storageBucket: 'baby-name-finder-93f67.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDQaK6XisEhhGpAIOrfmoUsJkitSESK7kQ',
-    appId: '1:649091699442:ios:92c676fec0558a12faf66b',
-    messagingSenderId: '649091699442',
-    projectId: 'baby-name-finder-f2391',
-    storageBucket: 'baby-name-finder-f2391.appspot.com',
-    iosBundleId: 'com.example.babynames',
+    apiKey: 'AIzaSyA7GDB3Z5492YfYvS0-RGYOveqW_VvmQRQ',
+    appId: '1:557743982531:ios:189ef3bd227d5779979f76',
+    messagingSenderId: '557743982531',
+    projectId: 'baby-name-finder-93f67',
+    storageBucket: 'baby-name-finder-93f67.appspot.com',
+    iosBundleId: 'com.example.babyname',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDQaK6XisEhhGpAIOrfmoUsJkitSESK7kQ',
-    appId: '1:649091699442:ios:92c676fec0558a12faf66b',
-    messagingSenderId: '649091699442',
-    projectId: 'baby-name-finder-f2391',
-    storageBucket: 'baby-name-finder-f2391.appspot.com',
-    iosBundleId: 'com.example.babynames',
+    apiKey: 'AIzaSyA7GDB3Z5492YfYvS0-RGYOveqW_VvmQRQ',
+    appId: '1:557743982531:ios:189ef3bd227d5779979f76',
+    messagingSenderId: '557743982531',
+    projectId: 'baby-name-finder-93f67',
+    storageBucket: 'baby-name-finder-93f67.appspot.com',
+    iosBundleId: 'com.example.babyname',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyD_caM3iNEHtN_KRpcvjFuJOqCn2LcxAkY',
-    appId: '1:649091699442:web:3edec78537715074faf66b',
-    messagingSenderId: '649091699442',
-    projectId: 'baby-name-finder-f2391',
-    authDomain: 'baby-name-finder-f2391.firebaseapp.com',
-    storageBucket: 'baby-name-finder-f2391.appspot.com',
-    measurementId: 'G-81WH9CYSLM',
+    apiKey: 'AIzaSyAaoBhOlPW5Zbrlb12xGXSNKzrqA-Qiyc8',
+    appId: '1:557743982531:web:dd4a15ca9f06cd4b979f76',
+    messagingSenderId: '557743982531',
+    projectId: 'baby-name-finder-93f67',
+    authDomain: 'baby-name-finder-93f67.firebaseapp.com',
+    storageBucket: 'baby-name-finder-93f67.appspot.com',
+    measurementId: 'G-C9LLTY24JX',
   );
 }

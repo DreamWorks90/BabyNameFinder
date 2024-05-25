@@ -1,5 +1,4 @@
-import 'package:babynames/Gender/genderselection.dart';
-import 'package:babynames/nationality.dart';
+import 'package:babyname/nationality.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share/flutter_share.dart';
 
@@ -53,7 +52,7 @@ class _InvitePageState extends State<InvitePage> {
                       builder: (context) => const NationalityPage()),
                 );
               },
-              child: Text(
+              child: const Text(
                 "Not now ",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -71,8 +70,6 @@ class _InvitePageState extends State<InvitePage> {
         title: 'Share via', // Title of the share sheet
         text: 'Your invitation message here', // Invitation message
       );
-    } catch (e) {
-      print('Error sharing: $e');
-    }
+    } catch (e) {}
   }
 }

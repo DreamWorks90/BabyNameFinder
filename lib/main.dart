@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:babynames/firebase_options.dart';
+import 'package:babyname/babypage.dart';
 import 'package:crypto/crypto.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:babynames/db/database_helper.dart';
-import 'package:babynames/babypage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
+import 'db/database_helper.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

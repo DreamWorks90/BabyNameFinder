@@ -1,4 +1,4 @@
-package com.example.babynames
+package com.example.babyname
 
 import io.flutter.embedding.android.FlutterActivity
 

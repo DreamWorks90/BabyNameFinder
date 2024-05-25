@@ -1,7 +1,5 @@
+import 'package:babyname/db/database_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:babynames/db/database_helper.dart';
-import 'package:csv/csv.dart';
-
 
 class DataScreen extends StatefulWidget {
   const DataScreen({super.key});
@@ -52,8 +50,12 @@ class _DataScreenState extends State<DataScreen> {
                       'Meaning: ${data[index]['meaning']}\nNationality: ${data[index]['nationality']}\nGender: ${data[index]['gender']}'),
                   trailing: IconButton(
                     icon: Icon(
-                      data[index]['liked_name'] == 1 ? Icons.favorite : Icons.favorite_border,
-                      color: data[index]['liked_name'] == 1 ? Colors.red : Colors.grey,
+                      data[index]['liked_name'] == 1
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      color: data[index]['liked_name'] == 1
+                          ? Colors.red
+                          : Colors.grey,
                     ),
                     onPressed: () {
                       // Toggle liked status
