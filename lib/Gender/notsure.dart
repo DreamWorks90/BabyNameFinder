@@ -1,9 +1,13 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+
+import 'package:csv/csv.dart';
+import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/material.dart';
-import 'package:babyname/db/database_helper.dart';
+import 'package:crypto/crypto.dart';
+import 'package:firebase_storage/firebase_storage.dart'; // Import Firebase Storage
+import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore if needed
+// Import your DatabaseHelper
 
 class NotsurepageWidget extends StatefulWidget {
   final String selectedNationality;
@@ -16,7 +20,7 @@ class NotsurepageWidget extends StatefulWidget {
 
 class _NotsurepageWidgetState extends State<NotsurepageWidget> {
   late Future<List<Map<String, dynamic>>> _nameData;
-  int _currentIndex = 0;
+  int _currentIndex = 0; // Initialize with a default value
   late InterstitialAd _interstitialAd;
   bool _isInterstitialAdReady = false;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -24,15 +28,56 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
   @override
   void initState() {
     super.initState();
-    _nameData = DatabaseHelper()
-        .getDataByGenderAndNationality('X', widget.selectedNationality);
+    _nameData =
+        _loadNameDataFromCSV(); // Load data from CSV in Firebase Storage
     _loadInterstitialAd();
     _loadCurrentIndex();
   }
 
+  Future<List<Map<String, dynamic>>> _loadNameDataFromCSV() async {
+    try {
+      String nationality = widget.selectedNationality;
+
+      // Replace 'firestorebabynames.csv' with your actual CSV file path in Firebase Storage
+      Reference ref =
+          FirebaseStorage.instance.ref().child('firestorebabynames.csv');
+
+      // Download the CSV file as a byte buffer
+      final data = await ref.getData();
+
+      // Convert Uint8List to List<int>
+      List<int> byteList = data!.toList();
+
+      // Decode the byte buffer to a string and then parse CSV
+      String csvData = utf8.decode(byteList); // Convert byte list to string
+      List<List<dynamic>> csvTable =
+          const CsvToListConverter().convert(csvData);
+
+      // Assuming CSV format is: name,meaning,nationality,gender
+      List<Map<String, dynamic>> dataList = [];
+      for (var row in csvTable) {
+        if (row[3] == 'X' && row[2] == nationality) {
+          // Check gender column for 'X'
+          dataList.add({
+            'name': row[0],
+            'meaning': row[1],
+            'nationality': row[2],
+            'gender': row[3],
+          });
+        }
+      }
+
+      return dataList;
+    } catch (e) {
+      print('Error loading data from CSV: $e');
+      return []; // Return empty list or handle error as needed
+    }
+  }
+
   void _loadInterstitialAd() {
     InterstitialAd.load(
-      adUnitId: 'ca-app-pub-3940256099942544/1033173712',
+      adUnitId:
+          'ca-app-pub-3940256099942544/1033173712', // Replace with your actual AdMob ad unit ID
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
@@ -98,27 +143,93 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
     }
   }
 
-  Future<void> _saveLikedNameToFirestore(int nameId) async {
+  Future<void> _saveLikedNameToFirestore(String name, String meaning) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? udid = prefs.getString('udid');
 
       if (udid != null) {
-        print('Saving liked name to Firestore: $nameId for user: $udid');
-        await _firestore
+        String hashedUdid = _hashUdid(udid);
+        print(
+            'Checking if name exists in Firestore: $name for user: $hashedUdid');
+
+        // Check if the name already exists
+        QuerySnapshot existingNames = await _firestore
             .collection('users')
-            .doc(udid)
+            .doc(hashedUdid)
             .collection('liked_names')
-            .add({
-          'name_id': nameId,
-        });
-        print('Saved liked name to Firestore successfully');
+            .where('name', isEqualTo: name)
+            .get();
+
+        if (existingNames.docs.isEmpty) {
+          // Name does not exist, save it to Firestore
+          print('Saving liked name to Firestore: $name for user: $hashedUdid');
+          await _firestore
+              .collection('users')
+              .doc(hashedUdid)
+              .collection('liked_names')
+              .add({
+            'name': name,
+            'meaning': meaning,
+          });
+          print('Saved liked name to Firestore successfully');
+        } else {
+          print('Name already exists in Firestore');
+        }
       } else {
         print('Error: UDID not found in SharedPreferences');
       }
     } catch (e) {
       print('Error saving to Firestore: $e');
     }
+  }
+
+  Future<void> _saveRejectdNameToFirestore(String name, String meaning) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? udid = prefs.getString('udid');
+
+      if (udid != null) {
+        String hashedUdid = _hashUdid(udid);
+        print(
+            'Checking if name exists in Firestore: $name for user: $hashedUdid');
+
+        // Check if the name already exists
+        QuerySnapshot existingNames = await _firestore
+            .collection('users')
+            .doc(hashedUdid)
+            .collection('rejected_names')
+            .where('name', isEqualTo: name)
+            .get();
+
+        if (existingNames.docs.isEmpty) {
+          // Name does not exist, save it to Firestore
+          print(
+              'Saving rejected name to Firestore: $name for user: $hashedUdid');
+          await _firestore
+              .collection('users')
+              .doc(hashedUdid)
+              .collection('rejected_names')
+              .add({
+            'name': name,
+            'meaning': meaning,
+          });
+          print('Saved rejected name to Firestore successfully');
+        } else {
+          print('Name already exists in Firestore');
+        }
+      } else {
+        print('Error: UDID not found in SharedPreferences');
+      }
+    } catch (e) {
+      print('Error saving to Firestore: $e');
+    }
+  }
+
+  String _hashUdid(String udid) {
+    var bytes = utf8.encode(udid); // data being hashed
+    var digest = sha256.convert(bytes);
+    return digest.toString();
   }
 
   @override
@@ -195,13 +306,16 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
                                     onTap: () async {
                                       final data = await _nameData;
                                       final currentName = data[_currentIndex];
-                                      final int id = currentName['id'];
-                                      await DatabaseHelper()
-                                          .updateLikedName(id, 1);
-                                      await _saveLikedNameToFirestore(id);
+                                      //final int id = currentName['id'];
+                                      final name = currentName['name'];
+                                      final meaning = currentName['meaning'];
+                                      //await DatabaseHelper().updateLikedName(id, 1);
+                                      await _saveLikedNameToFirestore(
+                                          name, meaning);
                                       setState(() {
                                         currentName['liked_name'] = 1;
                                       });
+                                      _navigateToNextName();
                                     },
                                     child: Image.asset(
                                         'assets/image/likedname.png'),
@@ -217,12 +331,16 @@ class _NotsurepageWidgetState extends State<NotsurepageWidget> {
                                     onTap: () async {
                                       final data = await _nameData;
                                       final currentName = data[_currentIndex];
-                                      final int id = currentName['id'];
-                                      await DatabaseHelper()
-                                          .updateRejectedName(id, 1);
+                                      //final int id = currentName['id'];
+                                      final name = currentName['name'];
+                                      final meaning = currentName['meaning'];
+                                      //await DatabaseHelper().updateLikedName(id, 1);
+                                      await _saveRejectdNameToFirestore(
+                                          name, meaning);
                                       setState(() {
-                                        currentName['rejected_name'] = 1;
+                                        currentName['rejected_names'] = 1;
                                       });
+                                      _navigateToNextName();
                                     },
                                     child: Image.asset(
                                         'assets/image/rejectedname.png'),

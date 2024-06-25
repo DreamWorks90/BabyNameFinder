@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'likednames.dart';
 import '../settings/settings.dart';
 
-class matchesnamepage extends StatefulWidget {
-  const matchesnamepage({super.key});
+class MatchesNamePage extends StatefulWidget {
+  const MatchesNamePage({super.key});
 
   @override
-  _matchesnamepage createState() => _matchesnamepage();
+  _MatchesNamePageState createState() => _MatchesNamePageState();
 }
 
-class _matchesnamepage extends State<matchesnamepage> {
+class _MatchesNamePageState extends State<MatchesNamePage> {
   final List<String> likedNames = [
     "Emma",
     "Liam",
@@ -126,7 +126,7 @@ class _matchesnamepage extends State<matchesnamepage> {
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const matchesnamepage()),
+          MaterialPageRoute(builder: (context) => const MatchesNamePage()),
         );
         break;
       case 3:

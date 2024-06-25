@@ -175,7 +175,7 @@ class _SettingsPageState extends State<SettingsPage> {
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const matchesnamepage()),
+          MaterialPageRoute(builder: (context) => const MatchesNamePage()),
         );
         break;
       case 3:

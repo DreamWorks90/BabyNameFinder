@@ -1,9 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'dart:io';
 import 'package:csv/csv.dart';
-
 
 class DatabaseHelper {
   static Database? _database;
@@ -22,7 +20,16 @@ class DatabaseHelper {
 
   Future<void> _createDb(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE $_tableName(id INTEGER PRIMARY KEY, name TEXT, meaning TEXT, nationality TEXT, gender TEXT, selected_nation TEXT, liked_name INTEGER, rejected_name INTEGER)');
+        'CREATE TABLE $_tableName('
+            'id INTEGER PRIMARY KEY, '
+            'name TEXT, '
+            'meaning TEXT, '
+            'nationality TEXT, '
+            'gender TEXT, '
+            'selected_nation TEXT, '
+            'liked_name INTEGER, '
+            'rejected_name INTEGER)'
+    );
   }
 
   Future<int> insertData(Map<String, dynamic> data) async {
@@ -35,18 +42,19 @@ class DatabaseHelper {
     return await db.query(_tableName, where: 'gender = ?', whereArgs: [gender]);
   }
 
-  Future<List<Map<String, dynamic>>> getDataByLikedName(String liked_name) async {
+  Future<List<Map<String, dynamic>>> getDataByLikedName(String likedName) async {
     Database db = await database;
-    return await db.query(_tableName, where: 'liked_name = ?', whereArgs: [liked_name]);
+    return await db.query(_tableName, where: 'liked_name = ?', whereArgs: [likedName]);
   }
-  Future<List<Map<String, dynamic>>> getDataByRejectedName(String rejected_name) async {
+
+  Future<List<Map<String, dynamic>>> getDataByRejectedName(String rejectedName) async {
     Database db = await database;
-    return await db.query(_tableName, where: 'rejected_name = ?', whereArgs: [rejected_name]);
+    return await db.query(_tableName, where: 'rejected_name = ?', whereArgs: [rejectedName]);
   }
 
   Future<void> importCsvData(String filePath) async {
     String data = await rootBundle.loadString('assets/babynames.csv');
-    List<List<dynamic>> csvData = CsvToListConverter().convert(data);
+    List<List<dynamic>> csvData = const CsvToListConverter().convert(data);
 
     for (var row in csvData) {
       await insertData({
@@ -56,7 +64,7 @@ class DatabaseHelper {
         'gender': row[3],
         'selected_nation': '',
         'liked_name': 0,
-        'rejected_name': 0, // Adding the rejected_name field with default value 0
+        'rejected_name': 0,
       });
     }
   }
@@ -68,12 +76,18 @@ class DatabaseHelper {
 
   Future<void> updateLikedName(int id, int liked) async {
     Database db = await database;
-    await db.rawUpdate('UPDATE $_tableName SET liked_name = ? WHERE id = ?', [liked, id]);
+    await db.rawUpdate(
+        'UPDATE $_tableName SET liked_name = ? WHERE id = ?',
+        [liked, id]
+    );
   }
 
   Future<void> updateRejectedName(int id, int rejected) async {
     Database db = await database;
-    await db.rawUpdate('UPDATE $_tableName SET rejected_name = ? WHERE id = ?', [rejected, id]);
+    await db.rawUpdate(
+        'UPDATE $_tableName SET rejected_name = ? WHERE id = ?',
+        [rejected, id]
+    );
   }
 
   Future<List<Map<String, dynamic>>> getDataByGenderAndNationality(String gender, String nationality) async {
@@ -81,9 +95,25 @@ class DatabaseHelper {
     if (nationality.isEmpty) {
       return await db.query(_tableName, where: 'gender = ?', whereArgs: [gender]);
     } else {
-      return await db.query(_tableName, where: 'gender = ? AND nationality = ?', whereArgs: [gender, nationality]);
+      return await db.query(
+          _tableName,
+          where: 'gender = ? AND nationality = ?',
+          whereArgs: [gender, nationality]
+      );
     }
   }
 
+  Future<int?> getIdByName(String name) async {
+    Database db = await database;
+    var result = await db.query(
+      _tableName,
+      where: 'name = ?',
+      whereArgs: [name],
+    );
+    if (result.isNotEmpty) {
+      return result.first['id'] as int?;
+    } else {
+      return null;
+    }
+  }
 }
-

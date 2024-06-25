@@ -7,23 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
-import 'db/database_helper.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  print("before firebase");
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  print("after firebase");
   await MobileAds.instance.initialize();
-  WidgetsFlutterBinding.ensureInitialized();
-  DatabaseHelper dbHelper = DatabaseHelper();
-  String filePath = 'assets/babynames.csv'; // Example file path
-  await dbHelper.importCsvData(filePath);
 
-  // Generate and store UDID and hashed UDID
+  // Generate and store UDID and hashed UDID, and store hashed UDID in Firestore
   await _generateAndStoreUdid();
 
   runApp(const MyApp());
@@ -39,13 +33,7 @@ Future<void> _generateAndStoreUdid() async {
     String hashedUdid = _hashUdid(udid);
     await prefs.setString(udidKey, udid);
     await prefs.setString(hashedUdidKey, hashedUdid);
-    print('Generated UDID: $udid');
-    print('Generated and hashed UDID: $hashedUdid');
-  } else {
-    String? udid = prefs.getString(udidKey);
-    String? hashedUdid = prefs.getString(hashedUdidKey);
-    print('Existing UDID: $udid');
-    print('Existing hashed UDID: $hashedUdid');
+    await _storeHashedUdidInFirestore(hashedUdid); // Store hashed UDID in Firestore
   }
 }
 
@@ -53,6 +41,18 @@ String _hashUdid(String udid) {
   var bytes = utf8.encode(udid); // data being hashed
   var digest = sha256.convert(bytes);
   return digest.toString();
+}
+
+Future<void> _storeHashedUdidInFirestore(String hashedUdid) async {
+  final firestore = FirebaseFirestore.instance;
+  final userDoc = firestore.collection('users').doc(hashedUdid);
+
+  // Update the latest active session timestamp
+  await userDoc.set({
+    'latest_active_session': Timestamp.now(),
+  }, SetOptions(merge: true));
+
+  print('Stored or updated hashed UDID in Firestore: $hashedUdid');
 }
 
 class MyApp extends StatelessWidget {
@@ -97,7 +97,6 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Replace 'assets/logo.svg' with the path to your SVG file
             Image.asset(
               'assets/image/babynames.png', // Use AssetImage for local images
               width: 100,

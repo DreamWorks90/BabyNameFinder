@@ -1,5 +1,7 @@
 import 'package:babyname/invitepage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BabyPage extends StatefulWidget {
   const BabyPage({super.key});
@@ -9,6 +11,33 @@ class BabyPage extends StatefulWidget {
 }
 
 class _BabyPageState extends State<BabyPage> {
+  @override
+  void initState() {
+    super.initState();
+    _storeLatestUdid(); // Store the latest UDID when the page is initialized
+  }
+
+  Future<void> _storeLatestUdid() async {
+    // Get the hashed UDID and store it in Firestore
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? hashedUdid = prefs.getString('hashed_udid');
+    if (hashedUdid != null) {
+      await _updateLatestActiveSession(hashedUdid);
+    }
+  }
+
+  Future<void> _updateLatestActiveSession(String hashedUdid) async {
+    final firestore = FirebaseFirestore.instance;
+    final userDoc = firestore.collection('users').doc(hashedUdid);
+
+    // Update the latest active session timestamp
+    await userDoc.set({
+      'latest_active_session': Timestamp.now(),
+    }, SetOptions(merge: true));
+
+    print('Updated latest active session for hashed UDID: $hashedUdid');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(

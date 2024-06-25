@@ -1,8 +1,12 @@
-import 'package:babyname/BottomNavigationBar/matchesname.dart';
-import 'package:babyname/Gender/genderselection.dart';
-import 'package:babyname/db/database_helper.dart';
-import 'package:babyname/settings/settings.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
+import '../Gender/genderselection.dart';
+import '../db/database_helper.dart';
+import '../settings/settings.dart';
+import 'matchesname.dart';
 
 class LikedNamePage extends StatefulWidget {
   const LikedNamePage({super.key});
@@ -12,35 +16,8 @@ class LikedNamePage extends StatefulWidget {
 }
 
 class _LikedNamePageState extends State<LikedNamePage> {
-// Index of the current page
-  // late BannerAd _bannerAd;
-  // bool _isBannerAdLoaded = false;
-
-  @override
-  void initState() {
-    super.initState();
-    // _bannerAd = BannerAd(
-    //   adUnitId: 'ca-app-pub-3940256099942544/6300978111',
-    //   size: AdSize.banner,
-    //   request: AdRequest(),
-    //   listener: BannerAdListener(
-    //     onAdLoaded: (_) {
-    //       setState(() {
-    //         _isBannerAdLoaded = true;
-    //       });
-    //     },
-    //     onAdFailedToLoad: (ad, error) {
-    //       ad.dispose();
-    //     },
-    //   ),
-    // )..load();
-  }
-
-  @override
-  void dispose() {
-    // _bannerAd.dispose();
-    super.dispose();
-  }
+  final int _currentIndex = 1; // Index of the current page
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +31,11 @@ class _LikedNamePageState extends State<LikedNamePage> {
           ),
         ),
         backgroundColor:
-            Colors.blue, // Setting app bar background color to blue
-        iconTheme: const IconThemeData(
-            color: Colors.white), // Set back arrow color to white
+        Colors.blue, // Setting app bar background color to blue
+        iconTheme:
+        const IconThemeData(color: Colors.white), // Set back arrow color to white
       ),
-      backgroundColor: Colors.blue, // Setting app bar background color to blue
+      backgroundColor: Colors.blue, // Setting background color to blue
       body: Container(
         color: Colors.blue, // Setting background color to blue
         padding: const EdgeInsets.all(16.0),
@@ -75,8 +52,8 @@ class _LikedNamePageState extends State<LikedNamePage> {
             ),
             const SizedBox(height: 16.0), // Added space
             Expanded(
-              child: FutureBuilder<List<Map<String, dynamic>>>(
-                future: DatabaseHelper().getDataByLikedName('1'),
+              child: FutureBuilder<String>(
+                future: _getHashedUdid(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
@@ -87,48 +64,56 @@ class _LikedNamePageState extends State<LikedNamePage> {
                       child: Text('Error: ${snapshot.error}'),
                     );
                   } else {
-                    final List<Map<String, dynamic>> likedNames =
-                        snapshot.data!;
-                    return ListView.builder(
-                      itemCount: likedNames.length,
-                      itemBuilder: (context, index) {
-                        final id = likedNames[index]['id'];
-                        final name = likedNames[index]['name'];
-                        final meaning = likedNames[index]['meaning'];
+                    final String hashedUdid = snapshot.data!;
+                    return StreamBuilder<QuerySnapshot>(
+                      stream: _firestore
+                          .collection('users')
+                          .doc(hashedUdid)
+                          .collection('liked_names')
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        } else if (snapshot.hasError) {
+                          return Center(
+                            child: Text('Error: ${snapshot.error}'),
+                          );
+                        } else {
+                          final likedNames = snapshot.data!.docs;
+                          return ListView.builder(
+                            itemCount: likedNames.length,
+                            itemBuilder: (context, index) {
+                              final nameData = likedNames[index];
+                              final name = nameData['name'];
+                              final meaning = nameData['meaning'];
 
-                        return GestureDetector(
-                          // onTap: () {
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => BabyNameDetailsWidget(
-                          //         name: name,
-                          //         meaning: meaning,
-                          //       ),
-                          //     ),
-                          //   );
-                          // },
-                          child: Card(
-                            child: ListTile(
-                              title: Text(
-                                name,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                              return GestureDetector(
+                                child: Card(
+                                  child: ListTile(
+                                    title: Text(
+                                      name,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    subtitle: Text(meaning),
+                                    trailing: IconButton(
+                                      icon: const Icon(
+                                        Icons.favorite,
+                                        color: Colors.red,
+                                      ),
+                                      onPressed: () {
+                                        _removeLikedName(hashedUdid, nameData.id, name);
+                                      },
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              subtitle: Text(meaning),
-                              trailing: IconButton(
-                                icon: const Icon(
-                                  Icons.favorite,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {
-                                  _updateLikedNameAndRemoveItem(id);
-                                },
-                              ),
-                            ),
-                          ),
-                        );
+                              );
+                            },
+                          );
+                        }
                       },
                     );
                   }
@@ -138,7 +123,6 @@ class _LikedNamePageState extends State<LikedNamePage> {
           ],
         ),
       ),
-
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -148,80 +132,69 @@ class _LikedNamePageState extends State<LikedNamePage> {
           ),
         ),
         padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    _navigateToPage(0);
-                  },
-                  icon: Image.asset(
-                    'assets/image/home.png',
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    _navigateToPage(1);
-                  },
-                  icon: Image.asset(
-                    'assets/image/likes.png',
-                    width: 40,
-                    height: 40,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    _navigateToPage(2);
-                  },
-                  icon: Image.asset(
-                    'assets/image/matches.png',
-                    width: 48,
-                    height: 48,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    _navigateToPage(3);
-                  },
-                  icon: Image.asset(
-                    'assets/image/settings.png',
-                    width: 44,
-                    height: 44,
-                  ),
-                ),
-              ],
+            IconButton(
+              onPressed: () {
+                _navigateToPage(0);
+              },
+              icon: Image.asset(
+                'assets/image/home.png',
+                width: 40,
+                height: 40,
+              ),
             ),
-            // SizedBox(height: 10), // Added space
-            // if (_isBannerAdLoaded)
-            //   Stack(
-            //     alignment: Alignment.topRight,
-            //     children: [
-            //       Container(
-            //         alignment: Alignment.center,
-            //         child: AdWidget(ad: _bannerAd),
-            //         width: _bannerAd.size.width.toDouble(),
-            //         height: _bannerAd.size.height.toDouble(),
-            //       ),
-            //       IconButton(
-            //         onPressed: () {
-            //           _bannerAd.dispose();
-            //           setState(() {
-            //             _isBannerAdLoaded = false;
-            //           });
-            //         },
-            //         icon: Icon(Icons.close),
-            //       ),
-            //     ],
-            //   ),
+            IconButton(
+              onPressed: () {
+                _navigateToPage(1);
+              },
+              icon: Image.asset(
+                'assets/image/likes.png',
+                width: 40,
+                height: 40,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                _navigateToPage(2);
+              },
+              icon: Image.asset(
+                'assets/image/matches.png',
+                width: 48,
+                height: 48,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                _navigateToPage(3);
+              },
+              icon: Image.asset(
+                'assets/image/settings.png',
+                width: 44,
+                height: 44,
+              ),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Future<String> _getHashedUdid() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? udid = prefs.getString('udid');
+    if (udid != null) {
+      return _hashUdid(udid);
+    } else {
+      throw Exception('UDID not found');
+    }
+  }
+
+  String _hashUdid(String udid) {
+    var bytes = utf8.encode(udid); // data being hashed
+    var digest = sha256.convert(bytes);
+    return digest.toString();
   }
 
   void _updateLikedNameAndRemoveItem(int id) async {
@@ -231,6 +204,50 @@ class _LikedNamePageState extends State<LikedNamePage> {
     });
   }
 
+  void _removeLikedName(String hashedUdid, String documentId, String name) async {
+    try {
+      // Remove from Firestore
+      await _firestore
+          .collection('users')
+          .doc(hashedUdid)
+          .collection('liked_names')
+          .doc(documentId)
+          .delete();
+
+      // Find the local database ID for the name
+      final localId = await DatabaseHelper().getIdByName(name);
+      if (localId != null) {
+        // Update the local database
+        _updateLikedNameAndRemoveItem(localId);
+      }
+    } catch (e) {
+      print('Error removing liked name: $e');
+    }
+  }
+
+
+  Future<void> _addLikedName(String hashedUdid, String name, String meaning) async {
+    final QuerySnapshot result = await _firestore
+        .collection('users')
+        .doc(hashedUdid)
+        .collection('liked_names')
+        .where('name', isEqualTo: name)
+        .where('meaning', isEqualTo: meaning)
+        .get();
+
+    final List<DocumentSnapshot> documents = result.docs;
+
+    if (documents.isEmpty) {
+      await _firestore
+          .collection('users')
+          .doc(hashedUdid)
+          .collection('liked_names')
+          .add({'name': name, 'meaning': meaning});
+    } else {
+      print('Name and meaning already exist.');
+    }
+  }
+
   void _navigateToPage(int index) {
     switch (index) {
       case 0:
@@ -238,17 +255,17 @@ class _LikedNamePageState extends State<LikedNamePage> {
           context,
           MaterialPageRoute(
               builder: (context) => const GenderPage(
-                    selectedNationality: '',
-                  )),
+                selectedNationality: '',
+              )),
         );
         break;
       case 1:
-        // Do nothing as we are already on the liked names page
+      // Do nothing as we are already on the liked names page
         break;
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const matchesnamepage()),
+          MaterialPageRoute(builder: (context) => const MatchesNamePage()),
         );
         break;
       case 3:

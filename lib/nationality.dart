@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NationalityPage extends StatefulWidget {
-  const NationalityPage({Key? key}) : super(key: key);
+  const NationalityPage({super.key});
 
   @override
   State<NationalityPage> createState() => _NationalityPageState();
@@ -30,7 +30,7 @@ class _NationalityPageState extends State<NationalityPage> {
     _prefs = await SharedPreferences.getInstance();
     setState(() {
       _showNationalityPage = _prefs.getBool('showNationalityPage') ?? true;
-      _selectedNationality = _prefs.getString('selectedNationality') ?? null;
+      _selectedNationality = _prefs.getString('selectedNationality');
     });
   }
 

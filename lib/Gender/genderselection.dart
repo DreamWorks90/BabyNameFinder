@@ -19,7 +19,7 @@ class GenderPage extends StatefulWidget {
 class _GenderPageState extends State<GenderPage> {
   late String _selectedNationality; // Declare selectedNationality variable
 
-// Index of the current page
+  final int _currentIndex = 0; // Index of the current page
   @override
   void initState() {
     super.initState();
@@ -289,7 +289,7 @@ class _GenderPageState extends State<GenderPage> {
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const matchesnamepage()),
+          MaterialPageRoute(builder: (context) => const MatchesNamePage()),
         );
         break;
       case 3:
